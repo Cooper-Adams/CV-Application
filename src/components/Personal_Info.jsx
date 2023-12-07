@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toggleForm from './Form_Toggle'
 
 const Personal_Info = (props) => {
   const [firstName, setFirstName] = useState('')
@@ -7,7 +8,6 @@ const Personal_Info = (props) => {
   const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
   const [fileName, setFileName] = useState('')
-  const [visible, setVisible] = useState(true)
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -33,8 +33,6 @@ const Personal_Info = (props) => {
 
     e.preventDefault()
   }
-
-  const toggleForm = (e) => { setVisible(!visible) }
 
   const submitForm = (e) => { 
     if (firstName.length || lastName.length || email.length || phone.length || address.length) {
@@ -65,23 +63,23 @@ const Personal_Info = (props) => {
             <span className='info-toggle' onClick={toggleForm}></span>
           </div>
 
-          <div className='user-name'>
+          <div className='info-section user-name active'>
             <input className='info-input' name='firstName' type='text' placeholder='First Name' value={firstName} onChange={handleChange} required />
             <input className='info-input' name='lastName' type='text' placeholder='Last Name' value={lastName} onChange={handleChange} required />
           </div>
             
-          <div className='contact-info'>
+          <div className='info-section contact-info active'>
             <input className='info-input' name='email' type='email' placeholder='Email Address' value={email} onChange={handleChange} required />
             <input className='info-input' name='phone' type='tel' placeholder='Phone Number' value={phone} onChange={handleChange} required />
             <input className='info-input' name='address' type='text' placeholder='City, Country' value={address} onChange={handleChange} required />
           </div>
 
-          <div className='update-functions'>
+          <div className='info-section update-functions active'>
             <label htmlFor='file' id='file-upload'> {fileName ? fileName : 'Upload Picture'} </label>
             <input type='file' id='file' accept='image/*' name='fileName' onChange={handleChange} />
           </div>
 
-          <div className="update-functions">
+          <div className="info-section update-functions active">
             <div className='update-cv' onClick={submitForm}><span>Save</span></div>
           </div>
         </div>
