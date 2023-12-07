@@ -1,15 +1,79 @@
 import React, { useState } from 'react'
+import toggleForm from './Form_Toggle'
 
 const Work_Info = (props) => {
+  const [companyName, setCompanyName] = useState('')
+  const [jobTitle, setJobTitle] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [finishDate, setFinishDate] = useState('')
+  const [jobDescription, setJobDescription] = useState('')
+
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case 'companyName':
+        setCompanyName(e.target.value)
+        break
+      case 'jobTitle':
+        setJobTitle(e.target.value)
+        break
+      case 'startDate':
+        setStartDate(e.target.value)
+        break
+      case 'finishDate':
+        setFinishDate(e.target.value)
+        break
+      case 'jobDescription':
+        setJobDescription(e.target.value)
+        break
+    }
+
+    e.preventDefault()
+  }
+
+  const submitForm = (e) => { 
+    if (companyName.length || jobTitle.length || startDate.length || finishDate.length || jobDescription.length) {
+      handleFormSubmit(document.getElementById('work-form'))
+    }
+  }
+
+  const handleFormSubmit = (e) => {
+    const formData = {
+      companyName: companyName,
+      jobTitle: jobTitle,
+      startDate: startDate,
+      finishDate: finishDate,
+      jobDescription: jobDescription,
+      form: 'work-form',
+    }
+
+    props.saveFormInput(formData)
+  }
+
   return (
     <>
       <div className='info-div'>
-        <h2>Experience</h2>
-        <input className='info-input' type='text' placeholder='Company Name' />
-        <input className='info-input' type='text' placeholder='Job Title' />
-        <input className='info-input' type='text' placeholder='Start Date (MM/YYYY)' />
-        <input className='info-input' type='text' placeholder='End Date' />
-        <textarea className='info-input' cols='30' rows='10' placeholder='Job Description'></textarea>
+        <div className='info-head'>
+          <h2 className='info-title'>Work Experience</h2>
+          <span className='info-toggle' onClick={toggleForm}></span>
+        </div>
+
+        <div className="info-section user-name">
+          <input className='info-input' name='companyName' type='text' placeholder='Company Name' />
+          <input className='info-input' name='jobTitle' type='text' placeholder='Job Title' />
+        </div>
+
+        <div className="info-section user-name">
+          <input className='info-input' name='startDate' type='text' placeholder='Start Date (MM/YYYY)' />
+          <input className='info-input' name='finishDate' type='text' placeholder='End Date' />
+        </div>
+        
+        <div className="info-section update-functions">
+          <textarea className='info-input' name='jobDescription' cols='30' rows='10' placeholder='Job Description'></textarea>
+        </div>
+
+        <div className="info-section update-functions">
+          <div className='update-cv' onClick={submitForm}><span>Save</span></div>
+        </div>
       </div>
     </>
   )
