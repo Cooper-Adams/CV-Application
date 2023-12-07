@@ -32,7 +32,6 @@ body {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .info-head {
@@ -101,6 +100,18 @@ input {
 
 input:hover, input:focus, #file-upload:hover {
   background: lightgray;
+}
+
+.info-section {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+.active {
+  height: auto;
+  clear: none;
+  gap: 2rem;
 }
 
 #file {
