@@ -34,8 +34,14 @@ function CV_App () {
           saveFormInput={saveFormInput}
           onChange={setPersonalForm}
         />
-        <Education_Info />
-        {/* <Work_Info /> */}
+        <Education_Info 
+          saveFormInput={saveFormInput}
+          onChange={setEduForm}
+        />
+        <Work_Info 
+          saveFormInput={saveFormInput}
+          onChange={setProfessionalForm}
+        />
       </div>
 
       <div className="cv-preview">
