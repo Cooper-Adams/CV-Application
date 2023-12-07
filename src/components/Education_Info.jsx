@@ -5,7 +5,6 @@ const Education_Info = (props) => {
   const [degree, setDegree] = useState('')
   const [startDate, setStartDate] = useState('')
   const [finishDate, setFinishDate] = useState('')
-  const [visible, setVisible] = useState(false)
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -21,15 +20,14 @@ const Education_Info = (props) => {
       case 'finishDate':
         setFinishDate(e.target.value)
         break
-      case 'visible':
-        setVisible(e.target.value)
-        break
     }
 
     e.preventDefault()
   }
 
-  const toggleForm = (e) => { setVisible(!visible) }
+  const toggleForm = (e) => {
+    
+  }
 
   const submitForm = (e) => { 
     if (schoolName.length || degree.length || startDate.length || finishDate.length) {
