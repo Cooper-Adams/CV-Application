@@ -86,7 +86,7 @@ body {
   transition: 300ms ease-in-out;
 }
 
-input {
+input, textarea {
   width: 100%;
   padding: 1rem;
   background: #F6F6F6;
@@ -98,7 +98,7 @@ input {
   font-family: 'Kumbh Sans', sans-serif;
 }
 
-input:hover, input:focus, #file-upload:hover {
+input:hover, input:focus, #file-upload:hover, textarea:hover {
   background: lightgray;
 }
 
