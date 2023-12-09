@@ -47,34 +47,41 @@ const Work_Info = (props) => {
     }
 
     props.saveFormInput(formData)
+    setCompanyName('')
+    setJobTitle('')
+    setStartDate('')
+    setFinishDate('')
+    setJobDescription('')
   }
 
   return (
     <>
-      <div className='info-div'>
-        <div className='info-head'>
-          <h2 className='info-title'>Work Experience</h2>
-          <span className='info-toggle' onClick={toggleForm}></span>
-        </div>
+      <form id='work-form'>
+        <div className='info-div'>
+          <div className='info-head'>
+            <h2 className='info-title'>Work Experience</h2>
+            <span className='info-toggle' onClick={toggleForm}></span>
+          </div>
 
-        <div className="info-section user-name">
-          <input className='info-input' name='companyName' type='text' placeholder='Company Name' />
-          <input className='info-input' name='jobTitle' type='text' placeholder='Job Title' />
-        </div>
+          <div className="info-section user-name">
+            <input className='info-input' value={companyName} onChange={handleChange} name='companyName' type='text' placeholder='Company Name' />
+            <input className='info-input' value={jobTitle} onChange={handleChange} name='jobTitle' type='text' placeholder='Job Title' />
+          </div>
 
-        <div className="info-section user-name">
-          <input className='info-input' name='startDate' type='text' placeholder='Start Date (MM/YYYY)' />
-          <input className='info-input' name='finishDate' type='text' placeholder='End Date' />
-        </div>
-        
-        <div className="info-section update-functions">
-          <textarea className='info-input' name='jobDescription' cols='30' rows='10' placeholder='Job Description'></textarea>
-        </div>
+          <div className="info-section user-name">
+            <input className='info-input' value={startDate} onChange={handleChange} name='startDate' type='text' placeholder='Start Date (MM/YYYY)' />
+            <input className='info-input' value={finishDate} onChange={handleChange} name='finishDate' type='text' placeholder='End Date' />
+          </div>
+          
+          <div className="info-section update-functions">
+            <textarea className='info-input' value={jobDescription} onChange={handleChange} name='jobDescription' cols='30' rows='10' placeholder='Job Description'></textarea>
+          </div>
 
-        <div className="info-section update-functions">
-          <div className='update-cv' onClick={submitForm}><span>Save</span></div>
+          <div className="info-section update-functions">
+            <div className='update-cv' onClick={submitForm}><span>Save</span></div>
+          </div>
         </div>
-      </div>
+      </form>
     </>
   )
 }

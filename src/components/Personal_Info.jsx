@@ -40,7 +40,7 @@ const Personal_Info = (props) => {
     }
   }
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e) => {    
     const formData = {
       firstName: firstName,
       lastName: lastName,
@@ -52,6 +52,12 @@ const Personal_Info = (props) => {
     }
 
     props.saveFormInput(formData)
+    setFirstName('')
+    setLastName('')
+    setEmail('')
+    setPhone('')
+    setAddress('')
+    setFileName('')
   }
 
   return (
