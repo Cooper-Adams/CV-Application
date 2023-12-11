@@ -32,7 +32,7 @@ const Work_Info = (props) => {
 
   const submitForm = (e) => { 
     if (companyName.length || jobTitle.length || startDate.length || finishDate.length || jobDescription.length) {
-      handleFormSubmit(document.getElementById('work-form'))
+      handleFormSubmit(e.nativeEvent)
     }
   }
 
@@ -52,6 +52,7 @@ const Work_Info = (props) => {
     setStartDate('')
     setFinishDate('')
     setJobDescription('')
+    toggleForm(e)
   }
 
   return (

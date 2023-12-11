@@ -28,7 +28,7 @@ const Education_Info = (props) => {
 
   const submitForm = (e) => { 
     if (schoolName.length || degree.length || schoolStart.length || schoolFinish.length) {
-      handleFormSubmit(document.getElementById('education-form'))
+      handleFormSubmit(e.nativeEvent)
     }
   }
 
@@ -46,6 +46,7 @@ const Education_Info = (props) => {
     setDegree('')
     setSchoolStart('')
     setSchoolFinish('')
+    toggleForm(e)
   }
 
   return (

@@ -36,7 +36,7 @@ const Personal_Info = (props) => {
 
   const submitForm = (e) => { 
     if (firstName.length || lastName.length || email.length || phone.length || address.length) {
-      handleFormSubmit(document.getElementById('personal-form'))
+      handleFormSubmit(e.nativeEvent)
     }
   }
 
@@ -58,6 +58,7 @@ const Personal_Info = (props) => {
     setPhone('')
     setAddress('')
     setFileName('')
+    toggleForm(e)
   }
 
   return (
