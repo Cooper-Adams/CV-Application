@@ -167,6 +167,7 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
 }
 
 .update-cv span {
+  pointer-events: none;
   position: relative;
   font-weight: bold;
   z-index: 2;
