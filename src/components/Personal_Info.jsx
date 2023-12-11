@@ -4,10 +4,13 @@ import toggleForm from './Form_Toggle'
 const Personal_Info = (props) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [title, setTitle] = useState('')
+  const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
-  const [fileName, setFileName] = useState('')
+  const [linkedin, setLinkedIn] = useState('')
+  const [website, setWebsite] = useState('')
+  const [description, setDescription] = useState('')
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -17,17 +20,26 @@ const Personal_Info = (props) => {
       case 'lastName':
         setLastName(e.target.value)
         break
+      case 'title':
+        setTitle(e.target.value)
+        break
+      case 'address':
+          setAddress(e.target.value)
+          break
       case 'email':
         setEmail(e.target.value)
         break
       case 'phone':
         setPhone(e.target.value)
         break
-      case 'address':
-        setAddress(e.target.value)
+      case 'linkedin':
+        setLinkedIn(e.target.value)
         break
-      case 'fileName':
-        setFileName(e.target.value)
+      case 'website':
+        setWebsite(e.target.value)
+        break
+      case 'description':
+        setDescription(e.target.value)
         break
     }
 
@@ -44,20 +56,26 @@ const Personal_Info = (props) => {
     const formData = {
       firstName: firstName,
       lastName: lastName,
+      title: title,
+      address: address,
       email: email,
       phone: phone,
-      address: address,
-      fileName: fileName,
+      linkedin: linkedin,
+      website: website,
+      description: description,
       form: 'personal-form',
     }
 
     props.saveFormInput(formData)
     setFirstName('')
     setLastName('')
+    setTitle('')
+    setAddress('')
     setEmail('')
     setPhone('')
-    setAddress('')
-    setFileName('')
+    setLinkedIn('')
+    setWebsite('')
+    setDescription('')
     toggleForm(e)
   }
 
@@ -74,16 +92,24 @@ const Personal_Info = (props) => {
             <input className='info-input' name='firstName' type='text' placeholder='First Name' value={firstName} onChange={handleChange} required />
             <input className='info-input' name='lastName' type='text' placeholder='Last Name' value={lastName} onChange={handleChange} required />
           </div>
+
+          <div className='info-section contact-info active'>
+            <input className='info-input' name='title' type='text' placeholder='Personal Title' value={title} onChange={handleChange} required />
+            <input className='info-input' name='address' type='text' placeholder='City, Country' value={address} onChange={handleChange} required />
+          </div>
             
           <div className='info-section contact-info active'>
             <input className='info-input' name='email' type='email' placeholder='Email Address' value={email} onChange={handleChange} required />
             <input className='info-input' name='phone' type='tel' placeholder='Phone Number' value={phone} onChange={handleChange} required />
-            <input className='info-input' name='address' type='text' placeholder='City, Country' value={address} onChange={handleChange} required />
           </div>
 
-          <div className='info-section update-functions active'>
-            <label htmlFor='file' id='file-upload'> {fileName ? fileName : 'Upload Picture'} </label>
-            <input type='file' id='file' accept='image/*' name='fileName' onChange={handleChange} />
+          <div className='info-section contact-info active'>
+            <input className='info-input' name='linkedin' type='text' placeholder='LinkedIn' value={linkedin} onChange={handleChange} required />
+            <input className='info-input' name='website' type='text' placeholder='Website/Github/etc.' value={website} onChange={handleChange} required />
+          </div>
+
+          <div className="info-section update-functions active">
+            <textarea className='info-input' name='description' value={description} onChange={handleChange} cols='30' rows='10' placeholder='Personal Description'></textarea>
           </div>
 
           <div className="info-section update-functions active">
