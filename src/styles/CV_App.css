@@ -1,10 +1,17 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: #F6F6F6;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 *::placeholder {
@@ -12,12 +19,24 @@ body {
 }
 
 .cv-input, .cv-preview {
-  width: 50%;
+  height: 100dvh;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cv-input::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  display: flex;
 }
 
 /* Information Input Section(s) Styling */
 
 .cv-input {
+  width: 100%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -193,4 +212,9 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
 .cv-preview {
   display: flex;
   justify-content: center;
+  width: calc(900px * (8.5 / 11));
+  background-color: white;
+  max-height: 900px;
+  padding: 1rem;
+  margin: 2rem;
 }
