@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import toggleForm from './Form_Toggle'
 
 const Personal_Info = (props) => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [fullName, setFullName] = useState('')
   const [title, setTitle] = useState('')
   const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
@@ -14,11 +13,8 @@ const Personal_Info = (props) => {
 
   const handleChange = (e) => {
     switch (e.target.name) {
-      case 'firstName':
-        setFirstName(e.target.value)
-        break
-      case 'lastName':
-        setLastName(e.target.value)
+      case 'fullName':
+        setFullName(e.target.value)
         break
       case 'title':
         setTitle(e.target.value)
@@ -47,15 +43,14 @@ const Personal_Info = (props) => {
   }
 
   const submitForm = (e) => { 
-    if (firstName.length || lastName.length || email.length || phone.length || address.length) {
+    if (fullName.length || email.length || phone.length || address.length || title.length || linkedin.length || website.length || description.length) {
       handleFormSubmit(e.nativeEvent)
     }
   }
 
   const handleFormSubmit = (e) => {    
     const formData = {
-      firstName: firstName,
-      lastName: lastName,
+      fullName: fullName,
       title: title,
       address: address,
       email: email,
@@ -67,8 +62,7 @@ const Personal_Info = (props) => {
     }
 
     props.saveFormInput(formData)
-    setFirstName('')
-    setLastName('')
+    setFullName('')
     setTitle('')
     setAddress('')
     setEmail('')
@@ -89,8 +83,7 @@ const Personal_Info = (props) => {
           </div>
 
           <div className='info-section user-name active'>
-            <input className='info-input' name='firstName' type='text' placeholder='First Name' value={firstName} onChange={handleChange} required />
-            <input className='info-input' name='lastName' type='text' placeholder='Last Name' value={lastName} onChange={handleChange} required />
+            <input className='info-input' name='fullName' type='text' placeholder='Full Name' value={fullName} onChange={handleChange} required />
           </div>
 
           <div className='info-section contact-info active'>
