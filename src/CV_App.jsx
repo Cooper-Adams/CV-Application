@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import JsPDF from 'jspdf'
 import Personal_Info from './components/Personal_Info'
 import Education_Info from './components/Education_Info'
 import Work_Info from './components/Work_Info'
 import Form_Modification from './components/Form_Modification'
-import Live_Preview from './components/CV_Preview'
 import './styles/CV_App.css'
+import Technical_Skills from './components/Technical_Skills'
+import Render_Personal from './components/Render_Personal'
+import Render_Professional from './components/Render_Professional'
+import Render_Education from './components/Render_Education'
 
 function CV_App () {
   const [personalForm, setPersonalForm] = useState([])
@@ -22,6 +26,13 @@ function CV_App () {
   }
 
   const generatePDF = () => {
+    const pdf = new JsPDF('portrait', 'pt', 'a4')
+    pdf.html(document.querySelector('#cv-pdf')).then(() => {
+        pdf.save('NewCV.pdf')
+    })
+  }
+
+  const saveSkillsArray = () => {
     /* Insert logic to generate and download a PDF of the CV*/
   }
 
@@ -41,29 +52,41 @@ function CV_App () {
 
   return (
     <>
-      <div className="cv-input">
+      <div className='cv-input'>
         <Form_Modification
           wipeFormData={wipeFormData}
           exampleFormData={exampleFormData}
           generatePDF={generatePDF}
         />
         <Personal_Info
+          personalForm={personalForm}
           saveFormInput={saveFormInput}
         />
-        <Education_Info 
+        <Work_Info
+          professionalForm={professionalForm}
           saveFormInput={saveFormInput}
         />
-        <Work_Info 
+        <Education_Info
+          educationForm={educationForm}
           saveFormInput={saveFormInput}
+        />
+        <Technical_Skills
+          saveSkillsArray={saveSkillsArray}
         />
       </div>
 
-      <div className="cv-preview">
-        <Live_Preview
-          personalForm={personalForm}
-          educationForm={educationForm}
-          professionalForm={professionalForm}
-        />
+      <div className='cv-preview' id='cv-pdf'>
+        <div className='cv-section personal'>
+          <Render_Personal props = {personalForm} />
+        </div>
+
+        <div className='cv-section professional'>
+          <Render_Professional  props = {professionalForm} />
+        </div>
+
+        <div className='cv-section education'>
+          <Render_Education props = {professionalForm} />
+        </div>
       </div>
     </>
   )
