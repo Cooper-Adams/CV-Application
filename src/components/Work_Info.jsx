@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import toggleForm from './Form_Toggle'
 
 const Work_Info = (props) => {
   const [companyName, setCompanyName] = useState('')
@@ -61,7 +60,6 @@ const Work_Info = (props) => {
         <div className='info-div'>
           <div className='info-head'>
             <h2 className='info-title'>Work Experience</h2>
-            <span className='info-toggle' onClick={toggleForm}></span>
           </div>
 
           <div className="info-section user-name">
