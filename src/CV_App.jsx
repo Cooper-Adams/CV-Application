@@ -6,14 +6,23 @@ import Work_Info from './components/Work_Info'
 import Form_Modification from './components/Form_Modification'
 import './styles/CV_App.css'
 import Technical_Skills from './components/Technical_Skills'
+import Soft_Skills from './components/Soft_Skills'
 import Render_Personal from './components/Render_Personal'
 import Render_Professional from './components/Render_Professional'
 import Render_Education from './components/Render_Education'
+import Render_TechnicalSkills from './components/Render_TechnicalSkills'
+import Render_SoftSkills from './components/Render_SoftSkills'
+import Render_Volunteer from './components/Render_Volunteer'
+import Render_Interests from './components/Render_Interests'
 
 function CV_App () {
   const [personalForm, setPersonalForm] = useState([])
   const [educationForm, setEducationForm] = useState([])
   const [professionalForm, setProfessionalForm] = useState([])
+  const [technicalSkills, setTechnicalSkills] = useState([])
+  const [softSkills, setSoftSkills] = useState([])
+  const [volunteerExperience, setVolunteerExperience] = useState([])
+  const [interests, setInterests] = useState([])
 
   const wipeFormData = () => {
     setPersonalForm({firstName: '', lastName: '', email: '', phone: '', address: '', fileName: ''})
@@ -32,8 +41,21 @@ function CV_App () {
     })
   }
 
-  const saveSkillsArray = () => {
-    /* Insert logic to generate and download a PDF of the CV*/
+  const saveSkillsArray = (skills, type) => {
+    switch (type) {
+      case 'technical':
+        setTechnicalSkills(skills)
+        break
+      case 'soft':
+        setSoftSkills(skills)
+        break
+      case 'volunteer':
+        setVolunteerExperience(skills)
+        break
+      case 'interests':
+        setInterests
+        break
+    }
   }
 
   const saveFormInput = (formData) => {
@@ -73,19 +95,44 @@ function CV_App () {
         <Technical_Skills
           saveSkillsArray={saveSkillsArray}
         />
+        <Soft_Skills
+          saveSkillsArray={saveSkillsArray}
+        />
       </div>
 
       <div className='cv-preview' id='cv-pdf'>
         <div className='cv-section personal'>
           <Render_Personal props = {personalForm} />
         </div>
+        
+        <div className="cv-section below-head">
+          <div className="cv-section bh-left">
+            <div className='cv-section professional'>
+              <Render_Professional  props = {professionalForm} />
+            </div>
 
-        <div className='cv-section professional'>
-          <Render_Professional  props = {professionalForm} />
-        </div>
+            <div className='cv-section education'>
+              <Render_Education props = {professionalForm} />
+            </div>
+          </div>
 
-        <div className='cv-section education'>
-          <Render_Education props = {professionalForm} />
+          <div className="cv-section bh-right">
+            <div className='cv-section technical-skills'>
+              <Render_TechnicalSkills props = {technicalSkills} />
+            </div>
+
+            <div className='cv-section soft-skills'>
+              <Render_SoftSkills props = {softSkills} />
+            </div>
+
+            <div className='cv-section volunteer'>
+              <Render_Volunteer props = {volunteerExperience} />
+            </div>
+
+            <div className='cv-section interests'>
+              <Render_Interests props = {interests} />
+            </div>
+          </div>
         </div>
       </div>
     </>
