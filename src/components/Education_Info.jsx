@@ -23,12 +23,8 @@ const Education_Info = (props) => {
     }
 
     e.preventDefault()
-  }
 
-  const submitForm = (e) => { 
-    if (schoolName.length || degree.length || schoolStart.length || schoolFinish.length) {
-      handleFormSubmit(e.nativeEvent)
-    }
+    handleFormSubmit(e)
   }
 
   const handleFormSubmit = (e) => {
@@ -41,11 +37,6 @@ const Education_Info = (props) => {
     }
 
     props.saveFormInput(formData)
-    setSchoolName('')
-    setDegree('')
-    setSchoolStart('')
-    setSchoolFinish('')
-    toggleForm(e)
   }
 
   return (
@@ -64,10 +55,6 @@ const Education_Info = (props) => {
           <div className="info-section user-name">
             <input className='info-input' name='schoolStart' type='text' value={schoolStart} onChange={handleChange} placeholder='Start Date (MM/YYYY)' required />
             <input className='info-input' name='schoolFinish' type='text' value={schoolFinish} onChange={handleChange} placeholder='End Date' required />
-          </div>
-          
-          <div className="info-section update-functions">
-            <div className='update-cv' onClick={submitForm}><span>Save</span></div>
           </div>
         </div>
       </form>

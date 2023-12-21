@@ -27,12 +27,8 @@ const Work_Info = (props) => {
     }
 
     e.preventDefault()
-  }
 
-  const submitForm = (e) => { 
-    if (companyName.length || jobTitle.length || startDate.length || finishDate.length || jobDescription.length) {
-      handleFormSubmit(e.nativeEvent)
-    }
+    handleFormSubmit(e)
   }
 
   const handleFormSubmit = (e) => {
@@ -46,12 +42,6 @@ const Work_Info = (props) => {
     }
 
     props.saveFormInput(formData)
-    setCompanyName('')
-    setJobTitle('')
-    setStartDate('')
-    setFinishDate('')
-    setJobDescription('')
-    toggleForm(e)
   }
 
   return (
@@ -74,10 +64,6 @@ const Work_Info = (props) => {
           
           <div className="info-section update-functions">
             <textarea className='info-input' value={jobDescription} onChange={handleChange} name='jobDescription' cols='30' rows='10' placeholder='Job Description'></textarea>
-          </div>
-
-          <div className="info-section update-functions">
-            <div className='update-cv' onClick={submitForm}><span>Save</span></div>
           </div>
         </div>
       </form>
