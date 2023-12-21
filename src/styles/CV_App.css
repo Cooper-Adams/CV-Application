@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.fill-blue {
+  filter: invert(11%) sepia(57%) saturate(4065%) hue-rotate(197deg) brightness(94%) contrast(101%);
 }
 
 body {
@@ -39,7 +46,7 @@ body::-webkit-scrollbar {
 .cv-input {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  width: 50%;
+  width: 40%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -68,6 +75,11 @@ body::-webkit-scrollbar {
 .info-head {
   display: flex;
   justify-content: space-between;
+}
+
+.info-title {
+  width: 100%;
+  border-bottom: 2px solid #003060;
 }
 
 .modification-btn {
@@ -183,13 +195,57 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
 
 /* Live Preview Styling */
 
-.cv-preview {
-  box-sizing: content-box;
+.right-panel {
+  width: 60%;
   display: flex;
   justify-content: center;
-  width: calc(700px * (8.5 / 11));
+  align-items: center;
+}
+
+.cv-preview {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
   background-color: white;
-  height: 700px;
+  height: 862.5px;
   padding: 1rem;
   margin: 2rem;
+  box-sizing: content-box;
+}
+
+.cv-preview h1 {
+  color: #003060;
+}
+
+.cv-name-desc {
+  width: 70%;
+}
+
+.cv-contacts {
+  width: 30%;
+}
+
+.cv-name-desc, .cv-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+/* needs to grow along with text after a certain height breakpoint */
+.personal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 20%;
+}
+
+.cv-contact-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cv-contact-p {
+  font-size: 12px;
 }
