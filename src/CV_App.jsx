@@ -14,9 +14,11 @@ import Render_TechnicalSkills from './components/Render_TechnicalSkills'
 import Render_SoftSkills from './components/Render_SoftSkills'
 import Render_Volunteer from './components/Render_Volunteer'
 import Render_Interests from './components/Render_Interests'
+import Contact_Info from './components/Contact_Info'
 
 function CV_App () {
   const [personalForm, setPersonalForm] = useState([])
+  const [contactForm, setContactForm] = useState([])
   const [educationForm, setEducationForm] = useState([])
   const [professionalForm, setProfessionalForm] = useState([])
   const [technicalSkills, setTechnicalSkills] = useState([])
@@ -25,13 +27,10 @@ function CV_App () {
   const [interests, setInterests] = useState([])
 
   const wipeFormData = () => {
-    setPersonalForm({firstName: '', lastName: '', email: '', phone: '', address: '', fileName: ''})
+    setPersonalForm({fullName: '', title: '', description: ''})
+    setContactForm({email: '', phone: '', address: '', linkedin: '', website: ''})
     setEducationForm({schoolName: '', degree: '', schoolStart: '', schoolFinish: ''})
     setProfessionalForm({companyName: '', jobTitle: '', startDate: '', finishDate: '', jobDescription: ''})
-  }
-
-  const exampleFormData = () => {
-    /* Insert logic to populate the CV display with example data */
   }
 
   const generatePDF = () => {
@@ -63,6 +62,9 @@ function CV_App () {
       case 'personal-form':
         setPersonalForm(formData)
         break
+      case 'contact-form':
+        setContactForm(formData)
+        break
       case 'education-form':
         setEducationForm(formData)
         break
@@ -77,11 +79,14 @@ function CV_App () {
       <div className='cv-input'>
         <Form_Modification
           wipeFormData={wipeFormData}
-          exampleFormData={exampleFormData}
           generatePDF={generatePDF}
         />
         <Personal_Info
           personalForm={personalForm}
+          saveFormInput={saveFormInput}
+        />
+        <Contact_Info
+          contactForm={contactForm}
           saveFormInput={saveFormInput}
         />
         <Work_Info
@@ -100,37 +105,39 @@ function CV_App () {
         />
       </div>
 
-      <div className='cv-preview' id='cv-pdf'>
-        <div className='cv-section personal'>
-          <Render_Personal props = {personalForm} />
-        </div>
-        
-        <div className="cv-section below-head">
-          <div className="cv-section bh-left">
-            <div className='cv-section professional'>
-              <Render_Professional  props = {professionalForm} />
-            </div>
-
-            <div className='cv-section education'>
-              <Render_Education props = {professionalForm} />
-            </div>
+      <div className="right-panel">
+        <div className='cv-preview' id='cv-pdf'>
+          <div className='cv-section personal'>
+            <Render_Personal props = {personalForm} />
           </div>
+          
+          <div className="cv-section below-head">
+            <div className="cv-section bh-left">
+              <div className='cv-section professional'>
+                <Render_Professional  props = {professionalForm} />
+              </div>
 
-          <div className="cv-section bh-right">
-            <div className='cv-section technical-skills'>
-              <Render_TechnicalSkills props = {technicalSkills} />
+              <div className='cv-section education'>
+                <Render_Education props = {professionalForm} />
+              </div>
             </div>
 
-            <div className='cv-section soft-skills'>
-              <Render_SoftSkills props = {softSkills} />
-            </div>
+            <div className="cv-section bh-right">
+              <div className='cv-section technical-skills'>
+                <Render_TechnicalSkills props = {technicalSkills} />
+              </div>
 
-            <div className='cv-section volunteer'>
-              <Render_Volunteer props = {volunteerExperience} />
-            </div>
+              <div className='cv-section soft-skills'>
+                <Render_SoftSkills props = {softSkills} />
+              </div>
 
-            <div className='cv-section interests'>
-              <Render_Interests props = {interests} />
+              <div className='cv-section volunteer'>
+                <Render_Volunteer props = {volunteerExperience} />
+              </div>
+
+              <div className='cv-section interests'>
+                <Render_Interests props = {interests} />
+              </div>
             </div>
           </div>
         </div>
