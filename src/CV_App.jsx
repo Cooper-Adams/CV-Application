@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import JsPDF from 'jspdf'
-import Personal_Info from './components/Personal_Info'
-import Education_Info from './components/Education_Info'
-import Work_Info from './components/Work_Info'
-import Form_Modification from './components/Form_Modification'
 import './styles/CV_App.css'
+import { nanoid } from 'nanoid'
+import Personal_Info from './components/Personal_Info'
+import Contact_Info from './components/Contact_Info'
+import Work_Info from './components/Work_Info'
+import Education_Info from './components/Education_Info'
+import Form_Modification from './components/Form_Modification'
 import Technical_Skills from './components/Technical_Skills'
 import Soft_Skills from './components/Soft_Skills'
 import Render_Personal from './components/Render_Personal'
@@ -12,25 +14,51 @@ import Render_Professional from './components/Render_Professional'
 import Render_Education from './components/Render_Education'
 import Render_TechnicalSkills from './components/Render_TechnicalSkills'
 import Render_SoftSkills from './components/Render_SoftSkills'
-import Render_Volunteer from './components/Render_Volunteer'
-import Render_Interests from './components/Render_Interests'
-import Contact_Info from './components/Contact_Info'
+import Render_Other from './components/Render_Other'
 
 function CV_App () {
-  const [personalForm, setPersonalForm] = useState([])
-  const [contactForm, setContactForm] = useState([])
-  const [educationForm, setEducationForm] = useState([])
-  const [professionalForm, setProfessionalForm] = useState([])
-  const [technicalSkills, setTechnicalSkills] = useState([])
-  const [softSkills, setSoftSkills] = useState([])
-  const [volunteerExperience, setVolunteerExperience] = useState([])
-  const [interests, setInterests] = useState([])
+  const [formData, setFormData] = useState({
+      personalInfo: {
+        fullName: '',
+        title: '',
+        description: '',
+      },
+      contactInfo: {
+        email: '',
+        phone: '',
+        address: '',
+        linkedin: '',
+        website: '',
+      },
+      educationInfo: [],
+      experienceInfo: [],
+      technicalSkills: [],
+      softSkills: [],
+      otherCategory: []
+    },
+  )
 
   const wipeFormData = () => {
-    setPersonalForm({fullName: '', title: '', description: ''})
-    setContactForm({email: '', phone: '', address: '', linkedin: '', website: ''})
-    setEducationForm({schoolName: '', degree: '', schoolStart: '', schoolFinish: ''})
-    setProfessionalForm({companyName: '', jobTitle: '', startDate: '', finishDate: '', jobDescription: ''})
+    setFormData({
+      personalInfo: {
+        fullName: '',
+        title: '',
+        description: '',
+      },
+      contactInfo: {
+        email: '',
+        phone: '',
+        address: '',
+        linkedin: '',
+        website: '',
+      },
+      educationInfo: [],
+      experienceInfo: [],
+      technicalSkills: [],
+      softSkills: [],
+      volunteerInfo: [],
+      interests: []
+    })
   }
 
   const generatePDF = () => {
@@ -40,38 +68,63 @@ function CV_App () {
     })
   }
 
-  const saveSkillsArray = (skills, type) => {
-    switch (type) {
-      case 'technical':
-        setTechnicalSkills(skills)
-        break
-      case 'soft':
-        setSoftSkills(skills)
-        break
-      case 'volunteer':
-        setVolunteerExperience(skills)
-        break
-      case 'interests':
-        setInterests
-        break
-    }
+  const personalInfoChange = (e) => {
+    const {name, value} = e.target
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      personalInfo: {
+        ...prevFormData.personalInfo,
+        [name]: value,
+      },
+    }))
   }
 
-  const saveFormInput = (formData) => {
-    switch (formData.form) {
-      case 'personal-form':
-        setPersonalForm(formData)
-        break
-      case 'contact-form':
-        setContactForm(formData)
-        break
-      case 'education-form':
-        setEducationForm(formData)
-        break
-      case 'professional-form':
-        setProfessionalForm(formData)
-        break
-    }
+  const contactInfoChange = (e) => {
+    const {name, value} = e.target
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      contactInfo: {
+        ...prevFormData.contactInfo,
+        [name]: value,
+      },
+    }))
+  }
+
+  const otherCatChange = (e, type) => {
+    e.preventDefault()
+
+    const form = e.target.closest('form')
+
+    const newInfo = [...form.querySelectorAll('input')]
+      .map((inputField) => ({
+        [inputField.name]: inputField.value,
+      }))
+      .reduce((obj, item) => Object.assign(obj, { ...item }))
+
+    const addlInfo = [
+      ...form.querySelectorAll('.extra-info'),
+    ].map((newEl) => ({ id: newEl.id, content: newEl.textContent }))
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [type]: [
+        ...prevFormData[type],
+        {
+          ...newInfo,
+          id: nanoid(),
+          additionalInfo: addlInfo,
+        },
+      ],
+    }))
+  }
+
+  const deleteOtherCat = (id, type) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [type]: prevFormData[type].filter((item) => item.id !== id),
+    }))
   }
 
   return (
@@ -82,61 +135,59 @@ function CV_App () {
           generatePDF={generatePDF}
         />
         <Personal_Info
-          personalForm={personalForm}
-          saveFormInput={saveFormInput}
+          formData={formData.personalInfo}
+          personalInfoChange={personalInfoChange}
         />
         <Contact_Info
-          contactForm={contactForm}
-          saveFormInput={saveFormInput}
+          formData={formData.contactInfo}
+          contactInfoChange={contactInfoChange}
         />
         <Work_Info
-          professionalForm={professionalForm}
-          saveFormInput={saveFormInput}
+          formData={formData.experienceInfo}
+          otherCatChange={otherCatChange}
+          deleteOtherCat={deleteOtherCat}
         />
         <Education_Info
-          educationForm={educationForm}
-          saveFormInput={saveFormInput}
+          formData={formData.educationInfo}
+          otherCatChange={otherCatChange}
+          deleteOtherCat={deleteOtherCat}
         />
-        <Technical_Skills
+        {/*<Technical_Skills
           saveSkillsArray={saveSkillsArray}
         />
         <Soft_Skills
           saveSkillsArray={saveSkillsArray}
-        />
+        /> */}
       </div>
 
       <div className="right-panel">
         <div className='cv-preview' id='cv-pdf'>
           <div className='cv-section personal'>
-            <Render_Personal props = {personalForm} />
+            <Render_Personal formData = {formData} />
           </div>
           
           <div className="cv-section below-head">
             <div className="cv-section bh-left">
-              <div className='cv-section professional'>
-                <Render_Professional  props = {professionalForm} />
+              <div className='cv-section bhls'>
+                <Render_Professional  formData = {formData} />
               </div>
 
-              <div className='cv-section education'>
-                <Render_Education props = {professionalForm} />
+              <div className='cv-section bhls'>
+                <Render_Education formData = {formData} />
               </div>
             </div>
 
             <div className="cv-section bh-right">
-              <div className='cv-section technical-skills'>
-                <Render_TechnicalSkills props = {technicalSkills} />
+              <div className='cv-section bhrs'>
+                <Render_TechnicalSkills formData = {formData} />
               </div>
 
-              <div className='cv-section soft-skills'>
-                <Render_SoftSkills props = {softSkills} />
+              <div className='cv-section bhrs'>
+                <Render_SoftSkills formData = {formData} />
               </div>
 
-              <div className='cv-section volunteer'>
-                <Render_Volunteer props = {volunteerExperience} />
-              </div>
-
-              <div className='cv-section interests'>
-                <Render_Interests props = {interests} />
+              <div className='cv-section bhrs'>
+                <Render_Other formData = {formData} />
               </div>
             </div>
           </div>
