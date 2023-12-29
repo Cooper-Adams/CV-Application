@@ -25,6 +25,12 @@ body::-webkit-scrollbar {
   color: gray;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .cv-input, .cv-preview {
   height: 100dvh;
   overflow-y: auto;
@@ -50,21 +56,18 @@ body::-webkit-scrollbar {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .form-mod {
   display: flex;
   justify-content: space-between;
   padding: 0 2rem;
-  font-family: 'Kumbh Sans', sans-serif;
 }
 
 .info-div {
   background: white;
   padding: 2rem;
   border-radius: 20px;
-  font-family: 'Kumbh Sans', sans-serif;
   display: flex;
   flex-direction: column;
   height: auto;
@@ -87,22 +90,6 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.user-name {
-  display: flex;
-  gap: 1rem;
-}
-
-.user-name > input {
-  width: 100%;
-  padding: 1rem;
-  background: #F6F6F6;
-  outline: none;
-  border: none;
-  border-radius: 14px;
-  font-size: 100%;
-  transition: 300ms ease-in-out;
-}
-
 input, textarea {
   width: 100%;
   padding: 1rem;
@@ -112,89 +99,103 @@ input, textarea {
   border-radius: 12px;
   font-size: 100%;
   transition: 300ms ease-in-out;
-  font-family: 'Kumbh Sans', sans-serif;
+  border: 1px solid lightgray;
 }
 
-input:hover, input:focus, #file-upload:hover, textarea:hover {
-  background: lightgray;
+input:focus, textarea:focus {
+  border: 1px solid #055C9D;
 }
 
-#file {
+.work-exp, .skill-container, .edu-exp, .edu-container {
   display: none;
 }
 
-#file-upload {
-  color: gray;
+.work-exp.work-active, .edu-exp.work-active {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-container.work-active, .edu-container.work-active {
+  display: flex;
+}
+
+.added-work-exp {
+  width: 100%;
   padding: 1rem;
   background: #F6F6F6;
+  outline: none;
+  border: 1px solid #003060;
   border-radius: 12px;
   font-size: 100%;
-  cursor: pointer;
-  display: inline-block;
-  transition: 300ms ease-in-out;
-  font-family: 'Kumbh Sans', sans-serif;
-  word-break: break-word;
-  width: calc(100% - 2rem);
-}
-
-.update-functions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.update-cv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 10%;
-  padding: 1rem;
-  transition: all 300ms;
-  position: relative;
-  &:before {
-    background-color: #F6F6F6;
-  } &:after {
-    background: lightgray;
-    opacity: 0;
-    transform: scale(1.2, 1.2);
-  } &:before, &::after {
-    border-radius: 12px;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: all 300ms;
-  }
-}
-
-.update-cv span {
-  pointer-events: none;
-  position: relative;
   font-weight: bold;
-  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  color: #055C9D;
 }
 
-.update-cv:hover::before {
-  opacity: 0;
-  transform: scale(0.5,0.5);
+.added-work-exp button {
+  background: none;
+  color: #055C9D;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.update-cv:hover::after {
-  opacity: 1;
-  transform: scale(1,1);
-}
-
-.contact-info {
-  display: inherit;
+.added-task {
+  background-color: #003060;
+  color: white;
+  padding: .5em;
+  border-radius: 15px;
+  display: flex;
   gap: 1rem;
+}
+
+.added-task button {
+  background: none;
+  color: white;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.separate-submit {
+  display: flex;
+}
+
+.info-input.ss {
+  padding-right: 20px;
+}
+
+.submit-task {
+  margin-left: -20px;
+  background: none;
+  color: #003060;
+  border: none;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn {
+  width: fit-content;
+  background: none;
+  color: #003060;
+  border: 1px solid #003060;
+  padding: .5em;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 150ms ease-in-out all;
+}
+
+.submit-btn:hover {
+  background: #003060;
+  color: white;
 }
 
 /* Live Preview Styling */
-
 .right-panel {
   width: 60%;
   display: flex;
@@ -213,7 +214,7 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
   box-sizing: content-box;
 }
 
-.cv-preview h1 {
+.cv-preview h2 {
   color: #003060;
 }
 
@@ -229,6 +230,11 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
   display: flex;
   flex-direction: column;
   gap: .5rem;
+  overflow-x: auto;
+}
+
+.cv-name-desc p {
+  font-size: 14px;
 }
 
 /* needs to grow along with text after a certain height breakpoint */
@@ -237,7 +243,8 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  min-height: 20%;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 .cv-contact-div {
@@ -248,4 +255,38 @@ input:hover, input:focus, #file-upload:hover, textarea:hover {
 
 .cv-contact-p {
   font-size: 12px;
+}
+
+.below-head {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 1rem;
+  gap: 1.5rem;
+}
+
+.bh-left, .bh-right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bh-left {
+  width: 60%;
+}
+
+.bh-right {
+  width: 40%;
+}
+
+.bhrs {
+  min-height: 25%;
+}
+
+.bhrs h5, .bhls h5 {
+  border-bottom: 2px solid #003060;
+}
+
+.bhls {
+  height: 50%;
 }
