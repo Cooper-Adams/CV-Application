@@ -9,6 +9,7 @@ import Education_Info from './components/Education_Info'
 import Form_Modification from './components/Form_Modification'
 import Technical_Skills from './components/Technical_Skills'
 import Soft_Skills from './components/Soft_Skills'
+import Other_Info from './components/Other_Info'
 import Render_Personal from './components/Render_Personal'
 import Render_Professional from './components/Render_Professional'
 import Render_Education from './components/Render_Education'
@@ -94,7 +95,7 @@ function CV_App () {
 
   const otherCatChange = (e, type) => {
     e.preventDefault()
-
+  
     const form = e.target.closest('form')
 
     const newInfo = [...form.querySelectorAll('input')]
@@ -125,6 +126,8 @@ function CV_App () {
       ...prevFormData,
       [type]: prevFormData[type].filter((item) => item.id !== id),
     }))
+
+    console.log(formData.technicalSkills)
   }
 
   return (
@@ -152,12 +155,21 @@ function CV_App () {
           otherCatChange={otherCatChange}
           deleteOtherCat={deleteOtherCat}
         />
-        {/*<Technical_Skills
-          saveSkillsArray={saveSkillsArray}
+        <Technical_Skills
+          formData={formData.technicalSkills}
+          otherCatChange={otherCatChange}
+          deleteOtherCat={deleteOtherCat}
         />
         <Soft_Skills
-          saveSkillsArray={saveSkillsArray}
-        /> */}
+          formData={formData.softSkills}
+          otherCatChange={otherCatChange}
+          deleteOtherCat={deleteOtherCat}
+        />
+        <Other_Info
+          formData={formData.otherCategory}
+          otherCatChange={otherCatChange}
+          deleteOtherCat={deleteOtherCat}
+        />
       </div>
 
       <div className="right-panel">
