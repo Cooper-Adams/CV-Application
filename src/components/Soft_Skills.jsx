@@ -1,60 +1,97 @@
 import React, { useState } from 'react'
+import { nanoid } from 'nanoid'
 
 const Soft_Skills = (props) => {
-    const [inputField, setInputField] = useState('')
-    const [softSkills, setSoftSkills] = useState([])
-    
-    const handleChange = (e) => {
-        setInputField(e.target.value)
+  const [skillInfo, setSkillInfo] = useState({
+    skills: [],
+    currentTask: ''
+  })
 
-        e.preventDefault()
+  const handleChange = (e) => {
+    const {name, value} = e.target
+
+    setSkillInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value
+    }))
+  }
+
+  const submitTask = (e) => {
+    let infoContent;
+
+    if (e.type === 'keydown' && e.key !== 'Enter') return;
+    if (e.type === 'click') {
+      infoContent = e.target.previousElementSibling.value;
+    } else if (e.key === 'Enter') infoContent = e.target.value;
+
+    if (!infoContent) { return }
+
+    if (!document.querySelector('.soft-container').classList.contains('work-active')) {
+      document.querySelector('.soft-container').classList.toggle('work-active')
     }
 
-    const submitForm = (e) => { if (inputField.length) { handleFormSubmit(e.nativeEvent) } }
+    setSkillInfo((prevInfo) => ({
+      ...prevInfo,
+      skills: [
+        ...prevInfo.skills,
+        {
+          id: nanoid(),
+          content: infoContent,
+        },
+      ],
+      currentTask: '',
+    }))
+  }
 
-    const handleFormSubmit = (e) => {
-        setSoftSkills([
-            ...softSkills,
-            {id: softSkills.length, skill: inputField}
-        ])
+  const deleteSkill = (e) => {
+    setSkillInfo((prevInfo) => ({
+        ...prevInfo,
+        skills: prevInfo.skills.filter((skill) => skill.id !== e.target.id)
+    }))
 
-        props.saveSkillsArray(softSkills)
-        setInputField('')
+    if ((skillInfo.skills.length - 1) == 0) {
+        document.querySelector('.soft-container').classList.toggle('work-active')
     }
+  }
+  
+  const displaySkills = skillInfo.skills.map((skill) => (
+    <li key={nanoid()} className='added-task'>
+        <span id={nanoid()} className='extra-info'>{skill.content}</span>
+        <button type='button' id={skill.id} onClick={deleteSkill}>
+        X
+        </button>
+    </li>
+  ))
 
-    return (
-        <>
-            <div className='info-div'>
-                <div className='info-head'>
-                    <h2 className='info-title'>Soft Skills</h2>
-                </div>
+  const submitSkillInfo = (e) => {
+    props.otherCatChange(e, 'softSkills')
+  }
 
-                <div className="info-section user-name">
-                    <input className='info-input' value={inputField} onChange={handleChange} name='inputField' type='text' placeholder='Soft Skill' />
-                    <div className='update-cv' onClick={submitForm}><span>Add Skill</span></div>
-                </div>
+  return (
+    <>
+      <form id='form soft-form'>
+        <div className='info-div'>
+          <div className='info-head' id='info-head'>
+            <h2 className='info-title'>Soft Skills</h2>
+          </div>
 
-                <div className="info-section">
-                    <ul>
-                        {softSkills.map(skills => (
-                            <li key={skills.id}>
-                                {skills.skill}{' '}
-                                <button onClick={() => {
-                                    setSoftSkills(
-                                        softSkills.filter(a =>
-                                            a.id !== skills.id
-                                        )
-                                    )
-                                }}>
-                                X
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        </>
-    )
+          <div className='separate-submit'>
+            <input className='info-input ss' value={skillInfo.currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Skill'></input>
+
+            <button type='button' className='submit-task' onClick={submitTask}>+</button>
+          </div>
+
+          <div className='soft-container'>
+            <ul>
+                {skillInfo.skills.length ? displaySkills : ''}
+            </ul>
+          </div>
+
+          <button type='button' className='submit-btn' onClick={submitSkillInfo}>Add Skills</button>
+        </div>
+      </form>
+    </>
+  )
 }
 
 export default Soft_Skills
