@@ -106,16 +106,16 @@ input:focus, textarea:focus {
   border: 1px solid #055C9D;
 }
 
-.work-exp, .skill-container, .edu-exp, .edu-container {
+.work-exp, .skill-container, .edu-exp, .edu-container, .tsk-exp, .tsk-container, .soft-exp, .soft-container, .other-exp, .other-container {
   display: none;
 }
 
-.work-exp.work-active, .edu-exp.work-active {
+.work-exp.work-active, .edu-exp.work-active, .tsk-exp.work-active, .soft-exp.work-active, .other-exp.work-active {
   display: flex;
   flex-direction: column;
 }
 
-.skill-container.work-active, .edu-container.work-active {
+.skill-container.work-active, .edu-container.work-active, .tsk-container.work-active, .soft-container.work-active, .other-container.work-active {
   display: flex;
 }
 
@@ -289,4 +289,8 @@ input:focus, textarea:focus {
 
 .bhls {
   height: 50%;
+}
+
+.lrCheck {
+  display: flex;
 }
