@@ -6,16 +6,23 @@ const Other_Info = (props) => {
     title: '',
     skills: [],
     currentTask: '',
-    side: true
+    side: false
   })
 
   const handleChange = (e) => {
     const {name, value} = e.target
 
-    setOtherCat((prevInfo) => ({
-      ...prevInfo,
-      [name]: value
-    }))
+    if (name === undefined) {
+      setOtherCat((prevInfo) => ({
+        ...prevInfo,
+        side: otherCat.side ? false : true
+      }))
+    } else {
+      setOtherCat((prevInfo) => ({
+        ...prevInfo,
+        [name]: value
+      }))
+    }
   }
 
   const submitTask = (e) => {
@@ -109,7 +116,10 @@ const Other_Info = (props) => {
           </div>
 
           <span className='lrCheck'>
-            Left Panel <input className='lrSwitch' type='checkbox' name='leftRight' id='leftRightSwitch' onChange={handleChange} checked={otherCat.side}/> Right Panel
+            Left Panel
+            <input className='lrSwitch' type='checkbox' name='side' id='lrSwitch' onChange={handleChange} checked={otherCat.side}/>
+            <label htmlFor='toggle' onClick={handleChange}></label>
+            Right Panel
           </span>
 
           <div className='other-container'>
