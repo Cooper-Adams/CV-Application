@@ -5,34 +5,34 @@ const Render_Personal = (props) => {
         <>
             <div className='cv-name-desc'>
                 <h2 className='cv-title-h1'>
-                    {props.formData.personalInfo.fullName || 'Your Name'}
+                    {props.formData.fullName || 'Your Name'}
                 </h2>
 
                 <h3 className='cv-title-h3'>
-                    {props.formData.personalInfo.title || 'Professional Title'}
+                    {props.formData.title || 'Professional Title'}
                 </h3>
 
                 <p className='cv-desc-p'>
-                    {props.formData.personalInfo.description || 'Description detailing your general skillset and abilities.'}
+                    {props.formData.description || 'Description detailing your general skillset and abilities.'}
                 </p>
             </div>
 
             <div className='cv-contacts'>
                 <div className="cv-contact-div">
                     <p className='cv-contact-p'>
-                        {props.formData.contactInfo.email || 'email@gmail.com'}
+                        {props.formData.email || 'email@gmail.com'}
                     </p>
                 </div>
 
                 <div className="cv-contact-div">
                     <p className='cv-contact-p'>
-                        {props.formData.contactInfo.phone || '123-456-789'}
+                        {props.formData.phone || '123-456-789'}
                     </p>
                 </div>
 
                 <div className="cv-contact-div">    
                     <p className='cv-contact-p'>
-                        {props.formData.contactInfo.address || 'City, State'}
+                        {props.formData.address || 'City, State'}
                     </p>
                 </div>
 
@@ -43,13 +43,13 @@ const Render_Personal = (props) => {
                     </svg>
                     
                     <p className='cv-contact-p'>
-                        {props.formData.contactInfo.linkedin || 'linkedin.com/your-profile'}
+                        {props.formData.linkedin || 'linkedin.com/your-profile'}
                     </p>
                 </div>
 
                 <div className="cv-contact-div">
                     <p className='cv-contact-p'>
-                        {props.formData.contactInfo.website || 'github.com/your-profile'}
+                        {props.formData.website || 'github.com/your-profile'}
                     </p>
                 </div>
             </div>
