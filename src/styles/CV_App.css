@@ -330,3 +330,23 @@ label::before {
 #lrSwitch:checked + label::before {
   transform: translateX(20px);
 }
+
+.fp-inner-div {
+  margin: .5rem 0;
+}
+
+.bhrs .fp-inner-header, .bhls .fp-inner-header {
+  border: none;
+}
+
+.fp-inner-ul {
+  list-style-position: inside;
+}
+
+.fp-inner-li {
+  margin-left: 1em;
+}
+
+.fp-inner-p {
+  font-size: 12px;
+}
