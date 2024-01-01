@@ -126,8 +126,6 @@ function CV_App () {
       ...prevFormData,
       [type]: prevFormData[type].filter((item) => item.id !== id),
     }))
-
-    console.log(formData.technicalSkills)
   }
 
   return (
@@ -175,32 +173,32 @@ function CV_App () {
       <div className="right-panel">
         <div className='cv-preview' id='cv-pdf'>
           <div className='cv-section personal'>
-            <Render_Personal formData = {formData} />
+            <Render_Personal formData = {formData.personalInfo} />
           </div>
           
           <div className="cv-section below-head">
             <div className="cv-section bh-left">
               <div className='cv-section bhls'>
-                <Render_Professional  formData = {formData} />
+                <Render_Professional  formData = {formData.experienceInfo} />
               </div>
 
               <div className='cv-section bhls'>
-                <Render_Education formData = {formData} />
+                <Render_Education formData = {formData.educationInfo} />
               </div>
             </div>
 
             <div className="cv-section bh-right">
               <div className='cv-section bhrs'>
-                <Render_TechnicalSkills formData = {formData} />
+                <Render_TechnicalSkills formData = {formData.technicalSkills} />
               </div>
 
               <div className='cv-section bhrs'>
-                <Render_SoftSkills formData = {formData} />
+                <Render_SoftSkills formData = {formData.softSkills} />
               </div>
 
-              <div className='cv-section bhrs'>
+              {/* <div className='cv-section bhrs'>
                 <Render_Other formData = {formData} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
