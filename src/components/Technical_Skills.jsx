@@ -104,7 +104,7 @@ const Technical_Skills = (props) => {
             <ul>
               {props.formData.map(exp => (
                 <li key={nanoid()} className='added-work-exp'>
-                    <span id={nanoid()} className='extra-info'>{exp.title}</span>
+                    <span id={nanoid()}>{exp.title}</span>
                     <button type='button' id={exp.id} onClick={deleteSkillInfo}>
                     X
                     </button>
