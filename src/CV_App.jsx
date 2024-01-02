@@ -108,17 +108,24 @@ function CV_App () {
       ...form.querySelectorAll('.extra-info'),
     ].map((newEl) => ({ id: newEl.id, content: newEl.textContent }))
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [type]: [
-        ...prevFormData[type],
-        {
-          ...newInfo,
-          id: nanoid(),
-          additionalInfo: addlInfo,
-        },
-      ],
-    }))
+    if (type == 'technicalSkills') {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [type]: [
+          ...prevFormData[type],
+          {
+            ...newInfo,
+            id: nanoid(),
+            additionalInfo: addlInfo,
+          },
+        ],
+      }))
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [type]: addlInfo
+      }))
+    }
   }
 
   const deleteOtherCat = (id, type) => {
