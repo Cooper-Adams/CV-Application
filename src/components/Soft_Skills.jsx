@@ -2,19 +2,12 @@ import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
 
 const Soft_Skills = (props) => {
-  const [skillInfo, setSkillInfo] = useState({
-    skills: [],
-    currentTask: ''
-  })
+  const [skillInfo, setSkillInfo] = useState([])
+  const [currentTask, setCurrentTask] = useState('')
 
-  const handleChange = (e) => {
-    const {name, value} = e.target
+  //Separate the skills array and the current task into two different states so the only thing that ends up submitted is the skill array. Might have to change the cv app callback
 
-    setSkillInfo((prevInfo) => ({
-      ...prevInfo,
-      [name]: value
-    }))
-  }
+  const handleChange = (e) => { setCurrentTask(e.target.value) }
 
   const submitTask = (e) => {
     let infoContent;
@@ -30,31 +23,29 @@ const Soft_Skills = (props) => {
       document.querySelector('.soft-container').classList.toggle('work-active')
     }
 
-    setSkillInfo((prevInfo) => ({
-      ...prevInfo,
-      skills: [
-        ...prevInfo.skills,
+    setSkillInfo((prevInfo) => (
+      [
+        ...prevInfo,
         {
           id: nanoid(),
-          content: infoContent,
-        },
-      ],
-      currentTask: '',
-    }))
+          content: infoContent
+        }
+      ]
+    ))
   }
 
   const deleteSkill = (e) => {
-    setSkillInfo((prevInfo) => ({
-        ...prevInfo,
-        skills: prevInfo.skills.filter((skill) => skill.id !== e.target.id)
-    }))
+    console.log(skillInfo)
+    setSkillInfo(
+      skillInfo.filter(a => a.id !== e.target.id)
+    )
 
-    if ((skillInfo.skills.length - 1) == 0) {
+    if ((skillInfo.length - 1) == 0) {
         document.querySelector('.soft-container').classList.toggle('work-active')
     }
   }
   
-  const displaySkills = skillInfo.skills.map((skill) => (
+  const displaySkills = skillInfo.map(skill => (
     <li key={nanoid()} className='added-task'>
         <span id={nanoid()} className='extra-info'>{skill.content}</span>
         <button type='button' id={skill.id} onClick={deleteSkill}>
@@ -76,14 +67,14 @@ const Soft_Skills = (props) => {
           </div>
 
           <div className='separate-submit'>
-            <input className='info-input ss' value={skillInfo.currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Skill'></input>
+            <input className='info-input ss' value={currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Skill'></input>
 
             <button type='button' className='submit-task' onClick={submitTask}>+</button>
           </div>
 
           <div className='soft-container'>
             <ul>
-                {skillInfo.skills.length ? displaySkills : ''}
+                {skillInfo.length ? displaySkills : ''}
             </ul>
           </div>
 
