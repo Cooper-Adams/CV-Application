@@ -1,12 +1,13 @@
 import React from 'react'
+import { nanoid } from 'nanoid'
 
 const Render_TechnicalSkills = (props) => {
     const techSkillRender = props.formData.map((skillCat) => (
-        <div className='fp-inner-div'>
+        <div key={nanoid()} className='fp-inner-div'>
             <h5 className='fp-inner-header'>{skillCat.title}</h5>
             <ul className='fp-inner-ul'>
                 {skillCat.additionalInfo.map((skill) => (
-                    <li className='fp-inner-li'>
+                    <li key={nanoid()} className='fp-inner-li'>
                         <p className='fp-inner-p'>{skill.content}</p>
                     </li>
                 ))}
