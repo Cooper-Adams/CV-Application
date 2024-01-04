@@ -68,7 +68,7 @@ const Work_Info = (props) => {
           </div>
 
           <div className='work-exp'>
-            <ul>
+            <ul className='ul-total'>
               {props.formData.map(exp => (
                 <li key={nanoid()} className='added-work-exp'>
                   <span id={nanoid()} className='extra-info'>{exp.companyName + ', ' + exp.startDate + ' - ' + exp.finishDate}</span>
