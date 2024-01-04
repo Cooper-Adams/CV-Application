@@ -48,7 +48,6 @@ ul {
 }
 
 /* Information Input Section(s) Styling */
-
 .cv-input {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -225,11 +224,11 @@ input:focus, textarea:focus {
 }
 
 .cv-name-desc {
-  width: 70%;
+  width: 60%;
 }
 
 .cv-contacts {
-  width: 30%;
+  width: 40%;
 }
 
 .cv-name-desc, .cv-contacts {
@@ -293,7 +292,7 @@ input:focus, textarea:focus {
 }
 
 .bhls {
-  height: 50%;
+  min-height: 25%;
 }
 
 .lrCheck {
