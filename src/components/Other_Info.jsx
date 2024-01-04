@@ -9,6 +9,13 @@ const Other_Info = (props) => {
     side: false
   })
 
+  const blankState = {
+    title: '',
+    skills: [],
+    currentTask: '',
+    side: false
+  }
+
   const handleChange = (e) => {
     const {name, value} = e.target
 
@@ -72,12 +79,26 @@ const Other_Info = (props) => {
     </li>
   ))
 
-  const submitSkillInfo = (e) => {
-    props.otherCatChange(e, 'otherCategory')
+  const submitSkillInfo = (e) => { 
+    if (!document.querySelector('.other-exp').classList.contains('work-active')) {
+      document.querySelector('.other-exp').classList.toggle('work-active')
+    }
+
+    otherCat.side ? props.otherCatChange(e, 'otherCatR') : props.otherCatChange(e, 'otherCatL')
+
+    setOtherCat(blankState)
+
+    if (otherCat.skills.length != 0) {
+      document.querySelector('.other-container').classList.toggle('work-active')
+    }
   }
 
   const deleteSkillInfo = (e) => {
-    props.deleteOtherCat(e.target.id, 'otherCategory')
+    if (e.target.value == true) {
+      props.deleteOtherCat(e.target.id, 'otherCatR')
+    } else {
+      props.deleteOtherCat(e.target.id, 'otherCatL')
+    }
 
     if ((props.formData.length - 1) == 0) {
         document.querySelector('.other-exp').classList.toggle('work-active')
@@ -86,20 +107,20 @@ const Other_Info = (props) => {
 
   return (
     <>
-      <form id='form soft-form'>
+      <form id='form other-form'>
         <div className='info-div'>
           <div className='info-head' id='info-head'>
             <h2 className='info-title'>Extra Information</h2>
           </div>
 
-          <span>If you have extra space and still have relevant information you want to display, add it here.</span>
+          <span>If you have extra space and still have relevant information to display, add it here.</span>
 
           <div className='other-exp'>
-            <ul>
+            <ul className='ul-total'>
               {props.formData.map(exp => (
                 <li key={nanoid()} className='added-work-exp'>
-                    <span id={nanoid()} className='extra-info'>{exp.title}</span>
-                    <button type='button' id={exp.id} onClick={deleteSkillInfo}>
+                    <span id={nanoid()}>{exp.title}</span>
+                    <button type='button' id={exp.id} value={exp.side} onClick={deleteSkillInfo}>
                     X
                     </button>
                 </li>
@@ -117,7 +138,7 @@ const Other_Info = (props) => {
 
           <span className='lrCheck'>
             Left Panel
-            <input className='lrSwitch' type='checkbox' name='side' id='lrSwitch' onChange={handleChange} checked={otherCat.side}/>
+            <input className='lrSwitch' type='checkbox' name='side' id='lrSwitch' onChange={handleChange} value={otherCat.side} checked={otherCat.side}/>
             <label htmlFor='toggle' onClick={handleChange}></label>
             Right Panel
           </span>
