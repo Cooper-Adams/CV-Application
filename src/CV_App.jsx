@@ -58,8 +58,8 @@ function CV_App () {
       experienceInfo: [],
       technicalSkills: [],
       softSkills: [],
-      volunteerInfo: [],
-      interests: []
+      otherCatL: [],
+      otherCatR: []
     })
   }
 
