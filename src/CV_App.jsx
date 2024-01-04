@@ -35,7 +35,8 @@ function CV_App () {
       experienceInfo: [],
       technicalSkills: [],
       softSkills: [],
-      otherCategory: []
+      otherCatL: [],
+      otherCatR: []
     },
   )
 
@@ -108,7 +109,7 @@ function CV_App () {
       ...form.querySelectorAll('.extra-info'),
     ].map((newEl) => ({ id: newEl.id, content: newEl.textContent }))
 
-    if (type == 'technicalSkills') {
+    if (type == 'technicalSkills' || type == 'otherCatL' || type == 'otherCatR') {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [type]: [
@@ -171,7 +172,7 @@ function CV_App () {
           deleteOtherCat={deleteOtherCat}
         />
         <Other_Info
-          formData={formData.otherCategory}
+          formData={formData.otherCatL.concat(formData.otherCatR)}
           otherCatChange={otherCatChange}
           deleteOtherCat={deleteOtherCat}
         />
@@ -185,27 +186,37 @@ function CV_App () {
           
           <div className="cv-section below-head">
             <div className="cv-section bh-left">
-              <div className='cv-section bhls'>
+              <div className='cv-section bhs'>
                 <Render_Professional  formData = {formData.experienceInfo} />
               </div>
 
-              <div className='cv-section bhls'>
+              <div className='cv-section bhs'>
                 <Render_Education formData = {formData.educationInfo} />
+              </div>
+
+              <div className='cv-section bhs'>
+                <Render_Other 
+                  formData = {formData.otherCatL} 
+                  side = 'left'
+                />
               </div>
             </div>
 
             <div className="cv-section bh-right">
-              <div className='cv-section bhrs'>
+              <div className='cv-section bhs'>
                 <Render_TechnicalSkills formData = {formData.technicalSkills} />
               </div>
 
-              <div className='cv-section bhrs'>
+              <div className='cv-section bhs'>
                 <Render_SoftSkills formData = {formData.softSkills} />
               </div>
 
-              {/* <div className='cv-section bhrs'>
-                <Render_Other formData = {formData} />
-              </div> */}
+              <div className='cv-section bhs'>
+                <Render_Other 
+                  formData = {formData.otherCatR} 
+                  side = 'right'
+                />
+              </div>
             </div>
           </div>
         </div>
