@@ -55,9 +55,7 @@ const Education_Info = (props) => {
     props.otherCatChange(e, 'educationInfo')
   }
 
-  const deleteWorkInfo = (e) => {
-    props.deleteOtherCat(props.formData.id, 'educationInfo')
-  }
+  const deleteWorkInfo = (e) => { props.deleteOtherCat(props.formData.id, 'educationInfo') }
 
   return (
     <>

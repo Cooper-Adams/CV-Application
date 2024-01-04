@@ -55,9 +55,7 @@ const Work_Info = (props) => {
     props.otherCatChange(e, 'experienceInfo')
   }
 
-  const deleteWorkInfo = (e) => {
-    props.deleteOtherCat(props.formData.id, 'experienceInfo')
-  }
+  const deleteWorkInfo = (e) => { props.deleteOtherCat(props.formData.id, 'experienceInfo') }
 
   return (
     <>
