@@ -95,7 +95,7 @@ const Work_Info = (props) => {
           </div>
 
           <div className='skill-container'>
-            <ul>
+            <ul className='ul-skill'>
               {workInfo.tasks.map(skills => (
                 <li key={nanoid()} className='added-task'>
                   <span id={nanoid()} className='extra-info'>{skills.content}</span>
