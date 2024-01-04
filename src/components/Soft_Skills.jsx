@@ -73,7 +73,7 @@ const Soft_Skills = (props) => {
           </div>
 
           <div className='soft-container'>
-            <ul>
+            <ul className='ul-skill'>
                 {skillInfo.length ? displaySkills : ''}
             </ul>
           </div>

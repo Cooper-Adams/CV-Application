@@ -123,7 +123,7 @@ const Other_Info = (props) => {
           </span>
 
           <div className='other-container'>
-            <ul>
+            <ul className='ul-skill'>
                 {otherCat.skills.length ? displaySkills : ''}
             </ul>
           </div>

@@ -122,7 +122,7 @@ const Technical_Skills = (props) => {
           </div>
 
           <div className='tsk-container'>
-            <ul>
+            <ul className='ul-skill'>
                 {skillInfo.skills.length ? displaySkills : ''}
             </ul>
           </div>

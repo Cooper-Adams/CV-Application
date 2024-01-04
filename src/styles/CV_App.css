@@ -167,6 +167,12 @@ input:focus, textarea:focus {
   padding-right: 20px;
 }
 
+.ul-skill {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .submit-task {
   margin-left: -20px;
   background: none;
@@ -237,7 +243,6 @@ input:focus, textarea:focus {
   font-size: 14px;
 }
 
-/* needs to grow along with text after a certain height breakpoint */
 .personal {
   width: 100%;
   display: flex;
