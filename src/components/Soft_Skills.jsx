@@ -35,7 +35,6 @@ const Soft_Skills = (props) => {
   }
 
   const deleteSkill = (e) => {
-    console.log(skillInfo)
     setSkillInfo(
       skillInfo.filter(a => a.id !== e.target.id)
     )
@@ -54,9 +53,7 @@ const Soft_Skills = (props) => {
     </li>
   ))
 
-  const submitSkillInfo = (e) => {
-    props.otherCatChange(e, 'softSkills')
-  }
+  const submitSkillInfo = (e) => { props.otherCatChange(e, 'softSkills') }
 
   return (
     <>
