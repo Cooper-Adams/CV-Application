@@ -132,7 +132,7 @@ function CV_App () {
   const deleteOtherCat = (id, type) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [type]: prevFormData[type].filter((item) => item.id !== id),
+      [type]: prevFormData[type].filter((item) => item.id !== id)
     }))
   }
 
@@ -195,10 +195,7 @@ function CV_App () {
               </div>
 
               <div className='cv-section bhs'>
-                <Render_Other 
-                  formData = {formData.otherCatL} 
-                  side = 'left'
-                />
+                <Render_Other formData = {formData.otherCatL} />
               </div>
             </div>
 
@@ -212,10 +209,7 @@ function CV_App () {
               </div>
 
               <div className='cv-section bhs'>
-                <Render_Other 
-                  formData = {formData.otherCatR} 
-                  side = 'right'
-                />
+                <Render_Other formData = {formData.otherCatR} />
               </div>
             </div>
           </div>
