@@ -101,7 +101,7 @@ const Technical_Skills = (props) => {
           </div>
 
           <div className='tsk-exp'>
-            <ul>
+            <ul className='ul-total'>
               {props.formData.map(exp => (
                 <li key={nanoid()} className='added-work-exp'>
                     <span id={nanoid()}>{exp.title}</span>
