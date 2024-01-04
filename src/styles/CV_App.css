@@ -118,6 +118,12 @@ input:focus, textarea:focus {
   display: flex;
 }
 
+.ul-total {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .added-work-exp {
   width: 100%;
   padding: 1rem;
@@ -283,16 +289,12 @@ input:focus, textarea:focus {
   width: 40%;
 }
 
-.bhrs {
+.bhs {
   min-height: 25%;
 }
 
-.bhrs h5, .bhls h5 {
+.bhs h5 {
   border-bottom: 2px solid #003060;
-}
-
-.bhls {
-  min-height: 25%;
 }
 
 .lrCheck {
@@ -339,7 +341,7 @@ label::before {
   margin: .5rem 0;
 }
 
-.bhrs .fp-inner-header, .bhls .fp-inner-header {
+.bhs .fp-inner-header {
   border: none;
 }
 
