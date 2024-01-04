@@ -11,6 +11,15 @@ const Work_Info = (props) => {
     currentTask: ''
   })
 
+  const blankState = {
+    companyName: '',
+    jobTitle: '',
+    startDate: '',
+    finishDate: '',
+    tasks: [],
+    currentTask: ''
+  }
+
   const handleChange = (e) => {
     const {name, value} = e.target
 
@@ -39,7 +48,7 @@ const Work_Info = (props) => {
       tasks: [
         ...prevInfo.tasks,
         {
-          id: e.target.previousElementSibling.id,
+          id: nanoid(),
           content: infoContent,
         },
       ],
@@ -53,9 +62,21 @@ const Work_Info = (props) => {
     }
 
     props.otherCatChange(e, 'experienceInfo')
+
+    setWorkInfo(blankState)
+
+    if (workInfo.tasks.length != 0) {
+      document.querySelector('.skill-container').classList.toggle('work-active')
+    }
   }
 
-  const deleteWorkInfo = (e) => { props.deleteOtherCat(props.formData.id, 'experienceInfo') }
+  const deleteWorkInfo = (e) => { 
+    props.deleteOtherCat(e.target.id, 'experienceInfo')
+
+    if ((props.formData.length - 1) == 0) {
+      document.querySelector('.work-exp').classList.toggle('work-active')
+    }
+  }
 
   return (
     <>
@@ -70,7 +91,7 @@ const Work_Info = (props) => {
               {props.formData.map(exp => (
                 <li key={nanoid()} className='added-work-exp'>
                   <span id={nanoid()} className='extra-info'>{exp.companyName + ', ' + exp.startDate + ' - ' + exp.finishDate}</span>
-                  <button type='button' onClick={deleteWorkInfo}>
+                  <button type='button' id={exp.id} onClick={deleteWorkInfo}>
                   X
                   </button>
                 </li>

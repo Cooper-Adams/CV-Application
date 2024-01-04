@@ -11,6 +11,15 @@ const Education_Info = (props) => {
     currentTask: ''
   })
 
+  const blankState = {
+    schoolName: '',
+    degree: '',
+    start: '',
+    finish: '',
+    extras: [],
+    currentTask: ''
+  }
+
   const handleChange = (e) => {
     const {name, value} = e.target
 
@@ -39,7 +48,7 @@ const Education_Info = (props) => {
       extras: [
         ...prevInfo.extras,
         {
-          id: e.target.previousElementSibling.id,
+          id: nanoid(),
           content: infoContent,
         },
       ],
@@ -53,9 +62,21 @@ const Education_Info = (props) => {
     }
 
     props.otherCatChange(e, 'educationInfo')
+
+    setEduInfo(blankState)
+
+    if (eduInfo.extras.length != 0) {
+      document.querySelector('.edu-container').classList.toggle('work-active')
+    }
   }
 
-  const deleteWorkInfo = (e) => { props.deleteOtherCat(props.formData.id, 'educationInfo') }
+  const deleteWorkInfo = (e) => {
+    props.deleteOtherCat(e.target.id, 'educationInfo')
+
+    if ((props.formData.length - 1) == 0) {
+      document.querySelector('.edu-exp').classList.toggle('work-active')
+    }
+  }
 
   return (
     <>
@@ -66,11 +87,11 @@ const Education_Info = (props) => {
           </div>
 
           <div className='edu-exp'>
-            <ul>
+            <ul className='ul-total'>
               {props.formData.map(exp => (
                 <li key={nanoid()} className='added-work-exp'>
                   <span id={nanoid()} className='extra-info'>{exp.schoolName + ', ' + exp.start + ' - ' + exp.finish}</span>
-                  <button type='button' onClick={deleteWorkInfo}>
+                  <button type='button' id={exp.id} onClick={deleteWorkInfo}>
                   X
                   </button>
                 </li>
