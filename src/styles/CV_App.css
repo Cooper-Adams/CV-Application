@@ -206,6 +206,46 @@ input:focus, textarea:focus {
   color: white;
 }
 
+.lrCheck {
+  display: flex;
+  align-items: center;
+}
+
+#lrSwitch {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  margin: 0 1rem;
+}
+
+label::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+#lrSwitch:checked + label {
+  background-color: #003060;
+}
+
+#lrSwitch:checked + label::before {
+  transform: translateX(20px);
+}
+
 /* Live Preview Styling */
 .right-panel {
   width: 60%;
@@ -279,6 +319,7 @@ input:focus, textarea:focus {
   display: flex;
   flex-direction: column;
   height: 100%;
+  gap: 2rem;
 }
 
 .bh-left {
@@ -289,56 +330,40 @@ input:focus, textarea:focus {
   width: 40%;
 }
 
-.bhs {
-  min-height: 25%;
-}
-
 .bhs h5 {
   border-bottom: 2px solid #003060;
 }
 
-.lrCheck {
-  display: flex;
-  align-items: center;
-}
-
-#lrSwitch {
-  display: none;
-}
-
-label {
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-  background-color: lightgray;
-  border-radius: 10px;
-  position: relative;
-  cursor: pointer;
-  margin: 0 1rem;
-}
-
-label::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  background-color: white;
-  border-radius: 50%;
-  transition: all 0.3s;
-}
-
-#lrSwitch:checked + label {
-  background-color: #003060;
-}
-
-#lrSwitch:checked + label::before {
-  transform: translateX(20px);
-}
-
 .fp-inner-div {
   margin: .5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fp-inner-upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.fp-inner-title-head {
+  word-wrap: break-word;
+}
+
+.fp-inner-subtitle-head {
+  border: none;
+}
+
+.fp-inner-tofrom {
+  font-size: 13px;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.fp-inner-lower-ul {
+  list-style: circle;
+  list-style-position: inside;
 }
 
 .bhs .fp-inner-header {
