@@ -9,11 +9,11 @@ const Personal_Info = (props) => {
               <h2 className='info-title'>Personal Information</h2>
             </div>
 
-            <input className='info-input' name='fullName' type='text' placeholder='Full Name' value={props.fullName} onChange={props.personalInfoChange} required />
+            <input className='info-input' name='fullName' type='text' placeholder='Full Name' value={props.formData.fullName} onChange={props.personalInfoChange} required />
 
-            <input className='info-input' name='title' type='text' placeholder='Personal Title' value={props.title} onChange={props.personalInfoChange} required />
+            <input className='info-input' name='title' type='text' placeholder='Personal Title' value={props.formData.title} onChange={props.personalInfoChange} required />
             
-            <textarea className='info-input' name='description' value={props.description} onChange={props.personalInfoChange} cols='30' rows='10' placeholder='Personal Description'></textarea>
+            <textarea className='info-input' name='description' value={props.formData.description} onChange={props.personalInfoChange} cols='30' rows='10' placeholder='Personal Description'></textarea>
         </div>
       </form>
     </>
