@@ -153,7 +153,10 @@ function CV_App () {
       <div className="right-panel">
         <div className='cv-preview' id='cv-pdf'>
           <div className='cv-section personal'>
-            <Render_Personal formData = {formData.personalInfo} />
+            <Render_Personal 
+              personalInfo={formData.personalInfo} 
+              contactInfo={formData.contactInfo}
+            />
           </div>
           
           <div className="cv-section below-head">
