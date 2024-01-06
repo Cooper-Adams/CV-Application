@@ -6,7 +6,6 @@ import Personal_Info from './components/Personal_Info'
 import Contact_Info from './components/Contact_Info'
 import Work_Info from './components/Work_Info'
 import Education_Info from './components/Education_Info'
-import Form_Modification from './components/Form_Modification'
 import Technical_Skills from './components/Technical_Skills'
 import Soft_Skills from './components/Soft_Skills'
 import Other_Info from './components/Other_Info'
@@ -39,29 +38,6 @@ function CV_App () {
       otherCatR: []
     },
   )
-
-  const wipeFormData = () => {
-    setFormData({
-      personalInfo: {
-        fullName: '',
-        title: '',
-        description: '',
-      },
-      contactInfo: {
-        email: '',
-        phone: '',
-        address: '',
-        linkedin: '',
-        website: '',
-      },
-      educationInfo: [],
-      experienceInfo: [],
-      technicalSkills: [],
-      softSkills: [],
-      otherCatL: [],
-      otherCatR: []
-    })
-  }
 
   const generatePDF = () => {
     const pdf = new JsPDF('portrait', 'pt', 'a4')
@@ -139,10 +115,6 @@ function CV_App () {
   return (
     <>
       <div className='cv-input'>
-        <Form_Modification
-          wipeFormData={wipeFormData}
-          generatePDF={generatePDF}
-        />
         <Personal_Info
           formData={formData.personalInfo}
           personalInfoChange={personalInfoChange}
