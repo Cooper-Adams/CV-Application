@@ -270,11 +270,11 @@ label::before {
 }
 
 .cv-name-desc {
-  width: 60%;
+  width: 70%;
 }
 
 .cv-contacts {
-  width: 40%;
+  width: 30%;
 }
 
 .cv-name-desc, .cv-contacts {
@@ -323,11 +323,11 @@ label::before {
 }
 
 .bh-left {
-  width: 60%;
+  width: 70%;
 }
 
 .bh-right {
-  width: 40%;
+  width: 30%;
 }
 
 .bhs h5 {
@@ -356,28 +356,33 @@ label::before {
 }
 
 .fp-inner-tofrom {
-  font-size: 13px;
   font-style: italic;
-  margin-top: 5px;
 }
 
-.fp-inner-lower-ul {
-  list-style: circle;
+.fp-inner-lower-ul, .fp-inner-ul {
+  list-style: disc;
   list-style-position: inside;
+}
+
+li.fp-inner-li:not(:last-child) {
+  margin-bottom: .5em;
 }
 
 .bhs .fp-inner-header {
   border: none;
 }
 
-.fp-inner-ul {
-  list-style-position: inside;
-}
-
-.fp-inner-li {
-  margin-left: 1em;
-}
-
 .fp-inner-p {
-  font-size: 12px;
+  text-align: justify;
+  display: inline;
+}
+
+.fp-soft {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.fp-inner-span {
+  width: min-content;
 }
