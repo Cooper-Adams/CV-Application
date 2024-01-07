@@ -191,7 +191,7 @@ function CV_App () {
         </div>
       </div>
         
-      <button class='dl-button' onClick={generatePDF}>
+      <button className='dl-button' onClick={generatePDF}>
         <svg
           width='40'
           height='40'
