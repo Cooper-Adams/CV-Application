@@ -85,7 +85,7 @@ function CV_App () {
       ...form.querySelectorAll('.extra-info'),
     ].map((newEl) => ({ id: newEl.id, content: newEl.textContent }))
 
-    if (type == 'technicalSkills' || type == 'otherCatL' || type == 'otherCatR' || type == 'experienceInfo' || type == 'educationInfo') {
+    if (type != 'softSkills') {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [type]: [
