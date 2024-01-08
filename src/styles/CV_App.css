@@ -25,6 +25,10 @@ body::-webkit-scrollbar {
   color: gray;
 }
 
+svg {
+  pointer-events: none;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -135,16 +139,27 @@ input:focus, textarea:focus {
   font-weight: bold;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: #055C9D;
+}
+
+.e-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .added-work-exp button {
   background: none;
   color: #055C9D;
   border: none;
+  margin: 0;
   padding: 0;
   cursor: pointer;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .added-task {
