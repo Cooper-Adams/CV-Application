@@ -32,6 +32,8 @@ const Soft_Skills = (props) => {
         }
       ]
     ))
+
+    setCurrentTask('')
   }
 
   const deleteSkill = (e) => {
