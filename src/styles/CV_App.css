@@ -402,7 +402,8 @@ li.fp-inner-li:not(:last-child) {
 }
 
 .fp-inner-span {
-  width: min-content;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .dl-button {
