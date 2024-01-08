@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 const Render_Professional = (props) => {
     const proRender = props.formData.map(job => {
         return(
-            <div className='fp-inner-container'>
+            <div key={nanoid()} className='fp-inner-container'>
                 <div className='fp-inner-upper'>
                     <div className='fp-titles-div'>
                         <h3 className='fp-inner-title-head'>{job.jobTitle || 'Job Title'}</h3>
