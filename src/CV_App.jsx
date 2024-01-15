@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import JsPDF from 'jspdf'
 import './styles/CV_App.css'
 import { nanoid } from 'nanoid'
 import Personal_Info from './components/Personal_Info'
