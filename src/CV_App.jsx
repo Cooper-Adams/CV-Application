@@ -39,12 +39,7 @@ function CV_App () {
     },
   )
 
-  const generatePDF = () => {
-    const pdf = new JsPDF('portrait', 'pt', 'a4')
-    pdf.html(document.querySelector('#cv-pdf')).then(() => {
-        pdf.save('NewCV.pdf')
-    })
-  }
+  const generatePDF = () => { window.print() }
 
   const personalInfoChange = (e) => {
     const {name, value} = e.target
@@ -151,7 +146,7 @@ function CV_App () {
       </div>
 
       <div className='right-panel'>
-        <div className='cv-preview' id='cv-pdf'>
+        <div className='cv-preview section-to-print' id='cv-pdf'>
           <div className='cv-section personal'>
             <Render_Personal 
               personalInfo={formData.personalInfo} 
@@ -191,7 +186,7 @@ function CV_App () {
         </div>
       </div>
         
-      <button className='dl-button' onClick={generatePDF}>
+      <button className='dl-button' onClick={generatePDF} aria-label='Download'>
         <svg
           width='40'
           height='40'
