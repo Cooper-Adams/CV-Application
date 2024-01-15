@@ -7,6 +7,19 @@
   font-family: 'Lato', sans-serif;
 }
 
+@media print {
+  body {
+    visibility: hidden;
+  }
+
+  .section-to-print {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
 .fill-blue {
   filter: invert(11%) sepia(57%) saturate(4065%) hue-rotate(197deg) brightness(94%) contrast(101%);
 }
