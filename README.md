@@ -1,6 +1,35 @@
-# React CV Application
+<h1 align='center'>React CV Generator</h1>
 
-Check it out here: https://stupendous-chaja-6cae5c.netlify.app
+<p align='center'>CV Generator for <a href='https://www.theodinproject.com/paths/full-stack-javascript/courses/react'>The Odin Project</a></p>
+
+<h2>Demo</h2>
+
+[Live Demo](https://react-cv-pdf.netlify.app)
+
+<h2>Built with</h2>
+
+<h3>Front-End</h3>
+
+- React
+- Styled-Components
+
+<h3>Back-End</h3>
+
+- Netlfiy
+- Node.js
+
+</br>
+
+<h2>Features</h2>
+
+- CV customisable with user inputs
+- User can add custom sections outside of the original six
+- Live preview of changes
+- Downloadable and printable PDF
+
+</br>
+
+<h2>General Information</h2>
 
 This repository contains the code for a CV generator application, powered by React and Vite. It was done as part of The Odin Project's React curriculum. The user inputs information relating to themselves in the form of contact info, education history, and work experience. In addition, the user can add an extra section to detail more about themselves if they deem it necessary. When finished, the user can print or download their CV as a fully functional PDF (depending on browser print support).
 
