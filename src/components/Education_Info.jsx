@@ -11,6 +11,8 @@ const Education_Info = (props) => {
     currentTask: ''
   })
 
+  console.log(props)
+
   const blankState = {
     schoolName: '',
     degree: '',
@@ -69,7 +71,7 @@ const Education_Info = (props) => {
 
   const displaySkills = eduInfo.additionalInfo.map((task) => (
     <li key={nanoid()} className='added-task'>
-        <span id={nanoid()} className='extra-info'>{task.content}</span>
+        <span id={nanoid()} className='extra-info ei-task'>{task.content}</span>
         <button type='button' id={task.id} onClick={deleteSkill}>
         X
         </button>

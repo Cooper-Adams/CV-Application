@@ -69,7 +69,7 @@ const Work_Info = (props) => {
   
   const displaySkills = workInfo.additionalInfo.map((task) => (
     <li key={nanoid()} className='added-task'>
-        <span id={nanoid()} className='extra-info'>{task.content}</span>
+        <span id={nanoid()} className='extra-info ei-task'>{task.content}</span>
         <button type='button' id={task.id} onClick={deleteSkill}>
         X
         </button>
