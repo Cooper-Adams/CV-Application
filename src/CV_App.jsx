@@ -76,7 +76,7 @@ function CV_App () {
       .reduce((obj, item) => Object.assign(obj, { ...item }))
 
     const addlInfo = [
-      ...form.querySelectorAll('.extra-info'),
+      ...form.querySelectorAll('.ei-task'),
     ].map((newEl) => ({ id: newEl.id, content: newEl.textContent }))
 
     if (type != 'softSkills') {
