@@ -368,7 +368,7 @@ label::before {
   gap: 2rem;
 }
 
-.fp-inner-container, .fp-inner-div {
+.fp-inner-div {
   margin-top: .5rem;
 }
 
