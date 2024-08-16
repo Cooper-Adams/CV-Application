@@ -4,10 +4,9 @@ import React from 'react'
 const Render_Other = (props) => {
     const otherCatRender = props.formData.map(cat => {
         return ( <>
-            <h5>{cat.title.toUpperCase()}</h5>
+            <h5 key={nanoid()}>{cat.title.toUpperCase()}</h5>
             
             <div key={nanoid()} className='fp-inner-div'>
-
                 <ul className='fp-inner-ul'>
                     {cat.additionalInfo.map((skill) => (
                         <li key={nanoid()} className='fp-inner-li'>
