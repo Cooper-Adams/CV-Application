@@ -80,17 +80,49 @@ function CV_App () {
     ].map((newEl) => ({ id: newEl.id, content: newEl.textContent }))
 
     if (type != 'softSkills') {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [type]: [
-          ...prevFormData[type],
-          {
-            ...newInfo,
-            id: nanoid(),
-            additionalInfo: addlInfo,
-          },
-        ],
-      }))
+      if (newInfo.id != '') {
+        if (type == 'educationInfo') {
+          for (let i = 0; i < formData.educationInfo.length; ++i) {
+            if (formData.educationInfo[i].id == newInfo.id) {
+              let newEduInfo = formData.educationInfo
+              newEduInfo[i] = {
+                ...newInfo,
+                additionalInfo: addlInfo
+              }
+              setFormData((prevFormData) => ({
+                ...prevFormData,
+                [type]: [...newEduInfo]
+              }))
+            }
+          }
+        } else {
+          for (let i = 0; i < formData.experienceInfo.length; ++i) {
+            if (formData.experienceInfo[i].id == newInfo.id) {
+              let newEduInfo = formData.experienceInfo
+              newEduInfo[i] = {
+                ...newInfo,
+                additionalInfo: addlInfo
+              }
+              setFormData((prevFormData) => ({
+                ...prevFormData,
+                [type]: [...newEduInfo]
+              }))
+            }
+          }
+        }
+      } else {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [type]: [
+            ...prevFormData[type],
+            {
+              ...newInfo,
+              id: nanoid(),
+              additionalInfo: addlInfo,
+            },
+          ],
+        }))
+      }
     } else {
       setFormData((prevFormData) => ({
         ...prevFormData,
