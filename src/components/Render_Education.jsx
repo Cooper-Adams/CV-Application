@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 const Render_Education = (props) => {
     const eduRender = props.formData.map(edu => {
         return(
-            <div className='fp-inner-container'>
+            <div key={nanoid()} className='fp-inner-container'>
                 <div className='fp-inner-upper'>
                     <div className='fp-titles-div'>
                         <h3 className='fp-inner-title-head'>{edu.schoolName || 'School Name'}</h3>
