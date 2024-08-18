@@ -8,10 +8,9 @@ const Education_Info = (props) => {
     start: '',
     finish: '',
     additionalInfo: [],
-    currentTask: ''
+    currentTask: '',
+    id: ''
   })
-
-  console.log(props)
 
   const blankState = {
     schoolName: '',
@@ -103,8 +102,6 @@ const Education_Info = (props) => {
   const editEduInfo = (e) => {
     let infoToEdit = props.formData.find((exp) => exp.id === e.target.id)
 
-    deleteEduInfo(e)
-
     setEduInfo(infoToEdit)
 
     if (infoToEdit.additionalInfo.length) {
@@ -178,6 +175,8 @@ const Education_Info = (props) => {
           <input className='info-input' name='start' type='text' value={eduInfo.start} onChange={handleChange} placeholder='Start Date' required />
           
           <input className='info-input' name='finish' type='text' value={eduInfo.finish} onChange={handleChange} placeholder='Graduation Date' required />
+
+          <input className='info-input' name='id' type='text' defaultValue={eduInfo.id} placeholder='id' hidden />
 
           <div className='separate-submit'>
             <input className='info-input ss' value={eduInfo.currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Awards/Organizations/etc.'></input>

@@ -8,7 +8,8 @@ const Work_Info = (props) => {
     startDate: '',
     finishDate: '',
     additionalInfo: [],
-    currentTask: ''
+    currentTask: '',
+    id: ''
   })
 
   const blankState = {
@@ -101,8 +102,6 @@ const Work_Info = (props) => {
   const editWorkInfo = (e) => {
     let infoToEdit = props.formData.find((exp) => exp.id === e.target.id)
 
-    deleteWorkInfo(e)
-
     setWorkInfo(infoToEdit)
 
     if (infoToEdit.additionalInfo.length) {
@@ -176,6 +175,8 @@ const Work_Info = (props) => {
           <input className='info-input' value={workInfo.startDate} onChange={handleChange} name='startDate' type='text' placeholder='Start Date (MM/YYYY)' />
           
           <input className='info-input' value={workInfo.finishDate} onChange={handleChange} name='finishDate' type='text' placeholder='End Date' />
+
+          <input className='info-input' name='id' type='text' defaultValue={workInfo.id} placeholder='id' hidden />
 
           <div className='separate-submit'>
             <input className='info-input ss' value={workInfo.currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Responsibilities'></input>
