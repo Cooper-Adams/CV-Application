@@ -109,6 +109,8 @@ const Work_Info = (props) => {
     }
   }
 
+  const reOrder = (e) => { props.reorderInfo(e, 'experienceInfo') }
+
   return (
     <>
       <form id='form work-form'>
@@ -119,10 +121,18 @@ const Work_Info = (props) => {
 
           <div className='work-exp'>
             <ul className='ul-total'>
-              {props.formData.map(exp => (
+              {props.formData.map((exp, index) => (
                 <li key={nanoid()} className='added-work-exp'>
                   <span id={nanoid()} className='extra-info'>{exp.companyName + ', ' + exp.startDate + ' - ' + exp.finishDate}</span>
                   <div className='e-btns'>
+                  <button type='button' id={index} onClick={reOrder} style={{display: (props.formData.length == 1 || index == 0) ? 'none' : 'block'}}>
+                      <svg width='1.5em' height='1.5em' viewBox='0 0 1024 1024' className='icon' version='1.1' xmlns='http://www.w3.org/2000/svg' fill='none' transform='matrix(1, 0, 0, -1, 0, 0)'><g id='SVGRepo_bgCarrier' strokeWidth='0'></g><g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g><g id='SVGRepo_iconCarrier'><path d='M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z' fill='currentColor'></path></g></svg>
+                    </button>
+
+                    <button type='button' className='down' id={index} onClick={reOrder} style={{display: (props.formData.length == 1 || index == props.formData.length - 1) ? 'none' : 'block'}}>
+                      <svg width='1.5em' height='1.5em' viewBox='0 0 1024 1024' className='icon' version='1.1' xmlns='http://www.w3.org/2000/svg' fill='none'><g id='SVGRepo_bgCarrier' strokeWidth='0'></g><g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g><g id='SVGRepo_iconCarrier'><path d='M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z' fill='currentColor'></path></g></svg>
+                    </button>
+
                     <button type='button' id={exp.id} onClick={editWorkInfo}>
                       <svg
                         width='1.5em'
