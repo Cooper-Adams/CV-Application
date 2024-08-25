@@ -81,33 +81,17 @@ function CV_App () {
 
     if (type != 'softSkills') {
       if (newInfo.id != '') {
-        if (type == 'educationInfo') {
-          for (let i = 0; i < formData.educationInfo.length; ++i) {
-            if (formData.educationInfo[i].id == newInfo.id) {
-              let newEduInfo = formData.educationInfo
-              newEduInfo[i] = {
-                ...newInfo,
-                additionalInfo: addlInfo
-              }
-              setFormData((prevFormData) => ({
-                ...prevFormData,
-                [type]: [...newEduInfo]
-              }))
+        for (let i = 0; i < formData[type].length; ++i) {
+          if (formData[type][i].id == newInfo.id) {
+            let newTypeInfo = formData[type]
+            newTypeInfo[i] = {
+              ...newInfo,
+              additionalInfo: addlInfo
             }
-          }
-        } else {
-          for (let i = 0; i < formData.experienceInfo.length; ++i) {
-            if (formData.experienceInfo[i].id == newInfo.id) {
-              let newEduInfo = formData.experienceInfo
-              newEduInfo[i] = {
-                ...newInfo,
-                additionalInfo: addlInfo
-              }
-              setFormData((prevFormData) => ({
-                ...prevFormData,
-                [type]: [...newEduInfo]
-              }))
-            }
+            setFormData((prevFormData) => ({
+              ...prevFormData,
+              [type]: [...newTypeInfo]
+            }))
           }
         }
       } else {
@@ -138,6 +122,28 @@ function CV_App () {
     }))
   }
 
+  const reorderInfo = (e, type) => {
+    let newInfo = formData[type]
+
+    if (e.target.classList.contains('down')) {
+      let temp = newInfo[parseInt(e.target.id + 1)]
+      newInfo[parseInt(e.target.id + 1)] = newInfo[e.target.id]
+      newInfo[e.target.id] = temp
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [type]: [...newInfo]
+      }))
+    } else {
+      let temp = newInfo[parseInt(e.target.id - 1)]
+      newInfo[parseInt(e.target.id - 1)] = newInfo[e.target.id]
+      newInfo[e.target.id] = temp
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [type]: [...newInfo]
+      }))
+    }
+  }
+
   return (
     <>
       <div className='cv-input'>
@@ -150,14 +156,16 @@ function CV_App () {
           contactInfoChange={contactInfoChange}
         />
         <Work_Info
+          deleteOtherCat={deleteOtherCat}
           formData={formData.experienceInfo}
           otherCatChange={otherCatChange}
-          deleteOtherCat={deleteOtherCat}
+          reorderInfo={reorderInfo}
         />
         <Education_Info
+          deleteOtherCat={deleteOtherCat}
           formData={formData.educationInfo}
           otherCatChange={otherCatChange}
-          deleteOtherCat={deleteOtherCat}
+          reorderInfo={reorderInfo}
         />
         <Technical_Skills
           formData={formData.technicalSkills}
