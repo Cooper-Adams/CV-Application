@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
+import Section_Head from './_Section_Head'
 import { nanoid } from 'nanoid'
 
 const Soft_Skills = (props) => {
   const [skillInfo, setSkillInfo] = useState([])
   const [currentTask, setCurrentTask] = useState('')
-
-  //Separate the skills array and the current task into two different states so the only thing that ends up submitted is the skill array. Might have to change the cv app callback
 
   const handleChange = (e) => { setCurrentTask(e.target.value) }
 
@@ -61,9 +60,7 @@ const Soft_Skills = (props) => {
     <>
       <form id='form soft-form'>
         <div className='info-div'>
-          <div className='info-head' id='info-head'>
-            <h2 className='info-title'>Soft Skills</h2>
-          </div>
+          <Section_Head section_title={'Soft Skills'}/>
 
           <div className='separate-submit'>
             <input className='info-input ss' value={currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Skill'></input>

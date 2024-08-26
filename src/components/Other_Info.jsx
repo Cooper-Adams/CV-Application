@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Section_Head from './_Section_Head'
 import { nanoid } from 'nanoid'
 
 const Other_Info = (props) => {
@@ -109,10 +110,8 @@ const Other_Info = (props) => {
     <>
       <form id='form other-form'>
         <div className='info-div'>
-          <div className='info-head' id='info-head'>
-            <h2 className='info-title'>Extra Information</h2>
-          </div>
-
+          <Section_Head section_title={'Other Information'}/>
+          
           <span>If you have extra space and still have relevant information to display, add it here.</span>
 
           <div className='other-exp'>

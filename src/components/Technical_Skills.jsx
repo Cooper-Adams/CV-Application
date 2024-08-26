@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Section_Head from './_Section_Head'
 import { nanoid } from 'nanoid'
 
 const Technical_Skills = (props) => {
@@ -108,9 +109,7 @@ const Technical_Skills = (props) => {
     <>
       <form id='form technical-form'>
         <div className='info-div'>
-          <div className='info-head' id='info-head'>
-            <h2 className='info-title'>Technical Skills</h2>
-          </div>
+          <Section_Head section_title={'Technical Skills'}/>
 
           <div className='tsk-exp'>
             <ul className='ul-total'>
