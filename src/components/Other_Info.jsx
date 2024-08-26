@@ -139,7 +139,7 @@ const Other_Info = (props) => {
           <span className='lrCheck'>
             Left Panel
             <input className='lrSwitch' type='checkbox' name='side' id='lrSwitch' onChange={handleChange} value={otherCat.side} checked={otherCat.side}/>
-            <label htmlFor='toggle' onClick={handleChange}></label>
+            <label onClick={handleChange}></label>
             Right Panel
           </span>
 
