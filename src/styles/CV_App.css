@@ -82,28 +82,38 @@ ul {
 
 .info-div {
   background: white;
-  padding: 2rem;
   border-radius: 20px;
+  clear: none;
   display: flex;
   flex-direction: column;
-  height: auto;
-  clear: none;
   gap: 2rem;
+  max-height: 0;
+  overflow: hidden;
+  padding: 2rem;
+  transition: max-height 0.5s ease-in-out;
 }
 
 .info-head {
+  align-items: center;
+  border-bottom: 2px solid #003060;
   display: flex;
   justify-content: space-between;
 }
 
 .info-title {
   width: 100%;
-  border-bottom: 2px solid #003060;
 }
 
-.modification-btn {
-  font-weight: bold;
+.collapse {
+  background: none;
+  border: none;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.clep {
+  transition: transform .25s ease-out;
 }
 
 input, textarea {
@@ -116,6 +126,10 @@ input, textarea {
   font-size: 100%;
   transition: 300ms ease-in-out;
   border: 1px solid lightgray;
+}
+
+textarea {
+  min-height: 210px;
 }
 
 input:focus, textarea:focus {
