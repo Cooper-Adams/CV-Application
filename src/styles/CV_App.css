@@ -450,3 +450,9 @@ li.fp-inner-li:not(:last-child) {
 .dl-button:active {
   transform: scale(.9);
 }
+
+.other {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
