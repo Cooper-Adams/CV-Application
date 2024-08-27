@@ -181,6 +181,7 @@ function CV_App () {
           formData={formData.otherCatL.concat(formData.otherCatR)}
           otherCatChange={otherCatChange}
           deleteOtherCat={deleteOtherCat}
+          reorderInfo={reorderInfo}
         />
       </div>
 
@@ -203,7 +204,7 @@ function CV_App () {
                 <Render_Education formData = {formData.educationInfo} />
               </div>
 
-              <div className='cv-section bhs'>
+              <div className='cv-section bhs other'>
                 <Render_Other formData = {formData.otherCatL} />
               </div>
             </div>
@@ -217,7 +218,7 @@ function CV_App () {
                 <Render_SoftSkills formData = {formData.softSkills} />
               </div>
 
-              <div className='cv-section bhs'>
+              <div className='cv-section bhs other'>
                 <Render_Other formData = {formData.otherCatR} />
               </div>
             </div>
