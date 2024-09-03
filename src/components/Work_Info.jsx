@@ -116,7 +116,7 @@ const Work_Info = (props) => {
     <>
       <form id='form work-form'>
         <div className='info-div'>
-          <Section_Head section_title={'Work Experience'}/>
+          <Section_Head section_title={'Work Experience'} display={props.workDisplay} setDisplay={props.setWorkDisplay}/>
 
           <div className='work-exp'>
             <ul className='ul-total'>

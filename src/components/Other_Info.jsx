@@ -130,7 +130,7 @@ const Other_Info = (props) => {
     <>
       <form id='form other-form'>
         <div className='info-div'>
-          <Section_Head section_title={'Other Information'}/>
+          <Section_Head section_title={'Other Information'} display={'xincpot'}/>
           
           <span style={{display: (props.formData.length > 0) ? 'none' : 'block'}}>If you have extra space and still have relevant information to display, add it here.</span>
 

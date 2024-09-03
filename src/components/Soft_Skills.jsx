@@ -60,7 +60,7 @@ const Soft_Skills = (props) => {
     <>
       <form id='form soft-form'>
         <div className='info-div'>
-          <Section_Head section_title={'Soft Skills'}/>
+          <Section_Head section_title={'Soft Skills'} display={props.softDisplay} setDisplay={props.setSoftDisplay}/>
 
           <div className='separate-submit'>
             <input className='info-input ss' value={currentTask} onChange={handleChange} name='currentTask' type='text' placeholder='Skill'></input>

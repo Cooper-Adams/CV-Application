@@ -109,7 +109,7 @@ const Technical_Skills = (props) => {
     <>
       <form id='form technical-form'>
         <div className='info-div'>
-          <Section_Head section_title={'Technical Skills'}/>
+          <Section_Head section_title={'Technical Skills'} display={props.techDisplay} setDisplay={props.setTechDisplay}/>
 
           <div className='tsk-exp'>
             <ul className='ul-total'>

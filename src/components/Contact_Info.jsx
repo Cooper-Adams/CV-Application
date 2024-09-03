@@ -6,7 +6,7 @@ const Contact_Info = (props) => {
     <>
       <form id='form contact-form'>
         <div className='info-div'>
-          <Section_Head section_title={'Contact Information'}/>
+          <Section_Head section_title={'Contact Information'} display={'xincpot'}/>
         
           <input className='info-input' autoComplete='true' name='email' type='email' placeholder='Email Address' value={props.formData.email} onChange={props.contactInfoChange} required />
             

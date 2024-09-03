@@ -116,7 +116,7 @@ const Education_Info = (props) => {
     <>
       <form id='form education-form'>
         <div className='info-div'>
-          <Section_Head section_title={'Education'}/>
+          <Section_Head section_title={'Education'} display={props.eduDisplay} setDisplay={props.setEduDisplay}/>
 
           <div className='edu-exp'>
             <ul className='ul-total'>

@@ -6,7 +6,7 @@ const Personal_Info = (props) => {
     <>
       <form id='form personal-form'>
         <div className='info-div'>
-            <Section_Head section_title={'Personal Information'}/>
+            <Section_Head section_title={'Personal Information'} display={'xincpot'}/>
 
             <input className='info-input' name='fullName' type='text' placeholder='Full Name' value={props.formData.fullName} onChange={props.personalInfoChange} required />
 
