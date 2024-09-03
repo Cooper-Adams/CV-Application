@@ -104,6 +104,11 @@ ul {
   width: 100%;
 }
 
+.ih-btns {
+  display: flex;
+  gap: 1rem;
+}
+
 .collapse {
   background: none;
   border: none;
