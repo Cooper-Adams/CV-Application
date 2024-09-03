@@ -37,6 +37,10 @@ function CV_App () {
       otherCatR: []
     },
   )
+  const [eduDisplay, setEduDisplay] = useState(true)
+  const [workDisplay, setWorkDisplay] = useState(true)
+  const [techDisplay, setTechDisplay] = useState(true)
+  const [softDisplay, setSoftDisplay] = useState(true)
 
   const generatePDF = () => { window.print() }
 
@@ -160,22 +164,30 @@ function CV_App () {
           formData={formData.experienceInfo}
           otherCatChange={otherCatChange}
           reorderInfo={reorderInfo}
+          workDisplay={workDisplay}
+          setWorkDisplay={setWorkDisplay}
         />
         <Education_Info
           deleteOtherCat={deleteOtherCat}
           formData={formData.educationInfo}
           otherCatChange={otherCatChange}
           reorderInfo={reorderInfo}
+          eduDisplay={eduDisplay}
+          setEduDisplay={setEduDisplay}
         />
         <Technical_Skills
           formData={formData.technicalSkills}
           otherCatChange={otherCatChange}
           deleteOtherCat={deleteOtherCat}
+          techDisplay={techDisplay}
+          setTechDisplay={setTechDisplay}
         />
         <Soft_Skills
           formData={formData.softSkills}
           otherCatChange={otherCatChange}
           deleteOtherCat={deleteOtherCat}
+          softDisplay={softDisplay}
+          setSoftDisplay={setSoftDisplay}
         />
         <Other_Info
           formData={formData.otherCatL.concat(formData.otherCatR)}
@@ -196,13 +208,17 @@ function CV_App () {
           
           <div className='cv-section below-head'>
             <div className='cv-section bh-left'>
-              <div className='cv-section bhs'>
-                <Render_Professional  formData = {formData.experienceInfo} />
-              </div>
+              {workDisplay &&
+                <div className='cv-section bhs'>
+                  <Render_Professional  formData = {formData.experienceInfo} />
+                </div>
+              }
 
-              <div className='cv-section bhs'>
-                <Render_Education formData = {formData.educationInfo} />
-              </div>
+              {eduDisplay && 
+                <div className='cv-section bhs'>
+                  <Render_Education formData = {formData.educationInfo} />
+                </div>
+              }
 
               <div className='cv-section bhs other'>
                 <Render_Other formData = {formData.otherCatL} />
@@ -210,13 +226,17 @@ function CV_App () {
             </div>
 
             <div className='cv-section bh-right'>
-              <div className='cv-section bhs'>
-                <Render_TechnicalSkills formData = {formData.technicalSkills} />
-              </div>
+              {techDisplay &&
+                <div className='cv-section bhs'>
+                  <Render_TechnicalSkills formData = {formData.technicalSkills} />
+                </div>
+              }
 
-              <div className='cv-section bhs'>
-                <Render_SoftSkills formData = {formData.softSkills} />
-              </div>
+              {softDisplay && 
+                <div className='cv-section bhs'>
+                  <Render_SoftSkills formData = {formData.softSkills} />
+                </div>
+              }
 
               <div className='cv-section bhs other'>
                 <Render_Other formData = {formData.otherCatR} />
