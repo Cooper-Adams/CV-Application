@@ -69,7 +69,6 @@ ul {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   width: 40%;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -91,6 +90,10 @@ ul {
   overflow: hidden;
   padding: 2rem;
   transition: max-height 0.25s ease-in-out;
+}
+
+.info-div.pi {
+  max-height: 871px;
 }
 
 .info-head {
