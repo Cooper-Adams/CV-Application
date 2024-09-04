@@ -1,6 +1,5 @@
 const Section_Head = (props) => {
     const toggleSection = (e) => {
-        console.log(e.target.firstChild)
         e.target.firstChild.style.transform == 'rotate(270deg)' ? e.target.firstChild.style.transform = 'rotate(90deg)' : e.target.firstChild.style.transform = 'rotate(270deg)'
         
         if (e.target.parentNode.parentNode.parentNode.style.maxHeight) {
